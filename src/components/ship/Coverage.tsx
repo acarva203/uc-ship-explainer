@@ -38,7 +38,7 @@ const ROWS: Row[] = [
   { id: "cov-dental", icon: "dental", title: "Dental", carrier: "Delta Dental", desc: "Two checkups and cleanings a year, plus fillings, root canals and crowns with cost sharing.",
     stat: "$1,200", statLabel: "Annual dental benefit maximum (the most the plan pays)",
     note: "No referral needed. Choose the Delta Dental PPO network specifically.",
-    details: (<><p className="mb-2 rounded bg-gold-soft px-2 py-1 text-gold-foreground">Not the same as the medical out-of-pocket max: the dental maximum caps what the <em>plan</em> pays; the medical max caps what <em>you</em> pay.</p>
+    details: (<><p className="mb-2 rounded bg-gold-soft px-2 py-1 text-gold-foreground">The dental maximum limits what the plan pays. The medical out-of-pocket max limits what you pay. They are not the same.</p>
       <ul className="list-disc space-y-1 pl-4">
       <li>Preventive and diagnostic: $0 in network.</li>
       <li>Deductible for other services: $25 in network, $50 out.</li>

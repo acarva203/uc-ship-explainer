@@ -56,7 +56,7 @@ export function Navigator() {
       intro="A referral is SHCS approval to get covered care elsewhere. Whether you need one depends on the care you’re getting. This guide doesn’t assess symptoms.">
       <p role="note" className="flex items-start gap-3 rounded-lg border border-destructive/40 px-4 py-3 text-sm">
         <span aria-hidden className="mt-0.5 font-semibold text-destructive">!</span>
-        <span><strong className="font-semibold">For an emergency, call <a href="tel:911" className="underline underline-offset-4">911</a> or go to the nearest emergency room.</strong> No referral needed.</span>
+        <span><strong className="font-semibold">For an emergency, call 911 or go to the nearest emergency room.</strong> <a href="tel:911" className="underline underline-offset-4">Call 911</a>. No referral needed.</span>
       </p>
       <ChoiceGroup label="Type of care" value={sel} onChange={setSel} className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-5">
         {PATHS.map((x) => {
