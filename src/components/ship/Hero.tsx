@@ -11,7 +11,7 @@ const NODES: { id: string; label: string; icon: IconName; x: number; y: number }
 
 export function CoverageHub() {
   return (
-    <figure className="mx-auto w-full max-w-[420px]">
+    <figure className="mx-auto w-full max-w-[320px] md:max-w-[420px]">
       <svg viewBox="-20 0 440 340" role="group" aria-labelledby="hub-title hub-desc" className="w-full text-primary">
         <title id="hub-title">UC SHIP coverage at a glance</title>
         <desc id="hub-desc">One plan connects five benefit areas: medical, mental health, prescriptions, dental and vision. Each label links to its explanation below.</desc>
@@ -36,28 +36,22 @@ export function CoverageHub() {
 
 export function Hero() {
   return (
-    <header className="grid items-center gap-10 pb-14 pt-10 md:grid-cols-[1fr_420px] md:pt-16">
+    <header className="grid items-center gap-6 pb-8 pt-8 md:grid-cols-[1fr_420px] md:gap-10 md:py-12">
       <div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="rounded-full border border-border px-2.5 py-1 font-medium">Independent student guide</span>
-          <span className="rounded-full bg-gold-soft px-2.5 py-1 font-medium text-gold-foreground">Plan year {PLAN_YEAR}</span>
+          <span className="text-muted-foreground">Independent student guide</span>
+          <span aria-hidden className="text-border">/</span>
+          <span className="font-medium text-gold-foreground">{PLAN_YEAR}</span>
         </div>
-         <h1 className="mt-6 text-3xl font-semibold text-primary md:text-4xl">UC SHIP, made clear.</h1>
+         <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
         <p className="prose-w mt-4 text-sm text-muted-foreground">
           UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver. <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
-        <nav aria-label="Start here" className="mt-8 grid gap-2 sm:grid-cols-3">
-          {[
-            ["#navigator", "I need care", "Where to go first"],
-            ["#costs", "I want to understand costs", "Premiums and visits"],
-            ["#waiver", "I already have insurance", "Waiver rules and dates"],
-          ].map(([href, t, s]) => (
-            <a key={href} href={href} className="group flex min-h-16 flex-col justify-center rounded-lg border border-border px-4 py-3 transition-colors hover:border-primary hover:bg-accent">
-              <span className="text-sm font-medium">{t} <span aria-hidden className="text-primary transition-transform group-hover:translate-x-0.5">→</span></span>
-              <span className="text-xs text-muted-foreground">{s}</span>
-            </a>
-          ))}
+        <nav aria-label="Start here" className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <a href="#navigator" className="inline-flex min-h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">I need care</a>
+          <a href="#costs" className="inline-flex min-h-11 items-center text-sm underline decoration-border underline-offset-4 hover:text-primary">Check costs</a>
+          <a href="#waiver" className="inline-flex min-h-11 items-center text-sm underline decoration-border underline-offset-4 hover:text-primary">Already insured?</a>
         </nav>
       </div>
       <CoverageHub />

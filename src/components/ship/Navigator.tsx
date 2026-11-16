@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Icon, type IconName } from "./icons";
-import { Section, Src } from "./ui";
+import { Button, Section, Src } from "./ui";
 import { SRC } from "@/data/ucship";
 
 type Step = { title: string; body: string; tag?: string };
@@ -48,7 +48,8 @@ const PATHS: Path[] = [
 
 export function Navigator() {
   const [sel, setSel] = useState("doctor");
-  const p = PATHS.find((x) => x.key === sel)!;
+  const p = PATHS.find((x) => x.key === sel);
+  if (!p) return null;
   return (
     <Section id="navigator" eyebrow="Care navigator" title="What do you need help with?"
       intro="A referral is SHCS approval to get covered care elsewhere. Whether you need one depends on the care you’re getting. This guide doesn’t assess symptoms.">
@@ -60,10 +61,10 @@ export function Navigator() {
         {PATHS.map((x) => {
           const on = x.key === sel;
           return (
-            <button key={x.key} role="radio" aria-checked={on} type="button" onClick={() => setSel(x.key)}
+            <Button key={x.key} role="radio" aria-checked={on} type="button" onClick={() => setSel(x.key)}
               className={`flex min-h-24 flex-col last:col-span-2 sm:last:col-span-1 items-center justify-center gap-2 rounded-lg border px-2 py-3 text-sm transition-colors ${on ? "border-primary bg-accent font-medium text-accent-foreground" : "border-border hover:border-foreground/40"}`}>
               <Icon name={x.icon} className="size-8" />{x.label}
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -88,7 +89,7 @@ export function Navigator() {
         {p.exceptions && (
           <div className="mt-8 rounded-lg bg-muted px-4 py-4">
             <p className="text-sm font-medium">No referral needed for:</p>
-            <ul className="mt-2 flex flex-wrap gap-2">{p.exceptions.map((e) => <li key={e} className="rounded-full border border-border bg-background px-3 py-1 text-xs">{e}</li>)}</ul>
+            <ul className="mt-2 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3">{p.exceptions.map((e) => <li key={e}>{e}</li>)}</ul>
           </div>
         )}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-4 text-sm">

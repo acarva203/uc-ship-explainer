@@ -137,9 +137,10 @@
 }
 
 @utility prose-w { max-width: 65ch; }
-@utility eyebrow { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted-foreground); font-weight: 500; }
+@utility eyebrow { font-size: 0.75rem; letter-spacing: 0; color: var(--color-muted-foreground); font-weight: 500; }
 @utility num { font-variant-numeric: tabular-nums; }
 @utility fade-in { animation: fadein 220ms ease-out; }
-@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.section-menu::backdrop { background: color-mix(in oklch, var(--foreground) 30%, transparent); }
 @layer base {
 }

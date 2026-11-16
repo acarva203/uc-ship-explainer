@@ -33,7 +33,7 @@ export function Costs() {
               <li key={k} className="grid grid-cols-[110px_1fr] items-center gap-3 text-sm sm:grid-cols-[140px_1fr]">
                 <span className={on ? "font-medium" : "text-muted-foreground"}>{x.label}</span>
                 <div className="flex items-center gap-2">
-                  <div className={`h-5 rounded-sm transition-all ${on ? "bg-primary" : "bg-chart-4"}`} style={{ width: `${(x.annual / max) * 70}%` }} />
+                  <div className={`h-5 rounded-sm transition-colors ${on ? "bg-primary" : "bg-chart-4"}`} style={{ width: `${(x.annual / max) * 70}%` }} />
                   <span className="num whitespace-nowrap text-xs">{usd(x.annual)}/yr · {usd(x.perTerm)}/{x.term}</span>
                 </div>
               </li>
@@ -81,9 +81,9 @@ function CostSplit() {
       <label htmlFor="allowed" className="mt-6 block text-sm">Example amount covered at the insurer’s agreed rate: <span className="num font-medium">{usd(amt)}</span></label>
       <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
       <div className="mt-4 flex h-8 w-full overflow-hidden rounded-sm border border-border" role="img" aria-label={`Of ${usd(amt)}: deductible ${usd(s.deductiblePart)}, coinsurance ${usd(s.coinsurancePart)}, plan pays ${usd(s.plan)}.`}>
-        <div className="bg-gold transition-all" style={{ width: `${pct(s.deductiblePart)}%` }} />
-        <div className="bg-primary transition-all" style={{ width: `${pct(s.coinsurancePart)}%` }} />
-        <div className="bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)] transition-all" style={{ width: `${pct(s.plan)}%` }} />
+        <div className="bg-gold" style={{ width: `${pct(s.deductiblePart)}%` }} />
+        <div className="bg-primary" style={{ width: `${pct(s.coinsurancePart)}%` }} />
+        <div className="bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)]" style={{ width: `${pct(s.plan)}%` }} />
       </div>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-4">
         <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 rounded-sm bg-gold" />Deductible</dt><dd className="num font-medium">{usd(s.deductiblePart)}</dd></div>

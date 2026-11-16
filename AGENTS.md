@@ -32,4 +32,5 @@ use the editor.
 <!-- AGENT-MEMORY:BEGIN -->
 - All UC SHIP facts live in `src/data/ucship.ts` with source URLs; components read from it — keeps figures verifiable and single-sourced.
 - Cost/deadline logic is pure in `src/lib/ship-math.ts` with tests in `src/test/ship-math.test.ts` — math must stay testable.
+- Section navigation uses a shared Navigation component with a native dialog on phones; native focus trapping and Escape dismissal keep all destinations keyboard-accessible.
 <!-- AGENT-MEMORY:END -->
