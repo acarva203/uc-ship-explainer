@@ -1,6 +1,6 @@
-import type { SVGProps } from "react";
+import type { ReactElement, SVGProps } from "react";
 export type IconName = "medical" | "mental" | "rx" | "dental" | "vision" | "urgent" | "er" | "virtual" | "shield";
-const paths: Record<IconName, JSX.Element> = {
+const paths: Record<IconName, ReactElement> = {
   medical: (<><path d="M9 4v5a4 4 0 0 0 8 0V4" /><path d="M13 13v3a4 4 0 0 0 8 0v-1" /><circle cx="21" cy="13" r="2" /><path d="M7.5 4h3M15.5 4h3" /></>),
   mental: (<><path d="M12 24c-4 0-7-3-7-7.5C5 11 9 6 14.5 6S24 10 24 15c0 2-1 3.5-2 4.5V24" /><path d="M11 14.5c1-1.5 3-1.5 3.5 0 .5-1.5 2.5-1.5 3.5 0 .6 1-.2 2.5-3.5 4.5-3.3-2-4.1-3.5-3.5-4.5Z" /></>),
   rx: (<><rect x="6" y="11" width="16" height="8" rx="4" transform="rotate(-40 14 15)" /><path d="m11 10.5 6 7.5" /></>),
