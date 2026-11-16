@@ -22,7 +22,7 @@ export function Waiver() {
     ["Check approval", "Watch your email. Keep UC SHIP fees paid until approved.", SRC.waiver],
   ];
   return (
-    <Section id="waiver" eyebrow="Waiver" title="Already insured? Check before you waive."
+    <Section id="waiver" eyebrow="Waiver" title="Already insured? Check before you waive"
       intro="Another insurance plan doesn’t cancel UC SHIP. You stay enrolled and keep paying until your waiver is approved. Apply again each academic year.">
       <ol className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 md:grid-cols-4">
         {steps.map(([t, b, h], i) => (

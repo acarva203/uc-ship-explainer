@@ -1,11 +1,16 @@
-import type { ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { explainTerms } from "./InsuranceText";
+
+export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(function Button({ className = "", ...props }, ref) {
+  return <button {...props} ref={ref} className={`inline-flex min-h-11 items-center justify-center rounded-md px-4 text-sm font-medium transition-colors focus-visible:outline-ring ${className}`} />;
+});
 export function Section({ id, eyebrow, title, intro, children }: { id: string; eyebrow: string; title: string; intro?: ReactNode; children: ReactNode }) {
   return (
-    <section id={id} aria-labelledby={`${id}-h`} className="border-t border-border py-16 md:py-20">
-      <p className="eyebrow">{eyebrow}</p>
-       <h2 id={`${id}-h`} className="mt-2 text-xl font-semibold text-primary md:text-2xl">{title}</h2>
-      {intro && <div className="prose-w mt-3 text-muted-foreground">{intro}</div>}
-      <div className="mt-8">{children}</div>
+    <section id={id} aria-labelledby={`${id}-h`} className={`border-t border-border py-12 ${id === "coverage" || id === "terms" || id === "help" ? "md:py-14" : "md:py-16"}`}>
+      {!["coverage", "costs", "waiver", "calendar"].includes(id) && <p className="eyebrow">{eyebrow}</p>}
+       <h2 id={`${id}-h`} className="mt-2 text-xl font-medium text-foreground md:text-2xl">{title}</h2>
+      {intro && <div className="prose-w mt-3 text-muted-foreground">{explainTerms(intro)}</div>}
+      <div className="mt-8">{explainTerms(children)}</div>
     </section>
   );
 }
@@ -20,10 +25,10 @@ export function Segmented<T extends string>({ label, value, options, onChange }:
   return (
     <div role="radiogroup" aria-label={label} className="inline-flex flex-wrap gap-1 rounded-lg border border-border bg-muted p-1">
       {options.map((o) => (
-        <button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}
-          className={`min-h-10 rounded-md px-3.5 text-sm transition-colors ${value === o.value ? "bg-background font-medium text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}>
+        <Button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}
+          className={value === o.value ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"}>
           {o.label}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -31,7 +36,7 @@ export function Segmented<T extends string>({ label, value, options, onChange }:
 export function Details({ summary, children }: { summary: string; children: ReactNode }) {
   return (
     <details className="group mt-3">
-      <summary className="inline-flex min-h-10 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary [&::-webkit-details-marker]:hidden">
+      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-foreground hover:text-primary [&::-webkit-details-marker]:hidden">
         <span aria-hidden className="inline-block transition-transform group-open:rotate-90">›</span>{summary}
       </summary>
       <div className="fade-in prose-w pb-2 pl-4 text-sm text-muted-foreground">{children}</div>

@@ -5,6 +5,7 @@ import { Coverage } from "@/components/ship/Coverage";
 import { Costs } from "@/components/ship/Costs";
 import { Calendar, Waiver } from "@/components/ship/Waiver";
 import { Help } from "@/components/ship/Help";
+import { Navigation } from "@/components/ship/Navigation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,20 +21,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAV = [["#navigator", "Get care"], ["#coverage", "Coverage"], ["#costs", "Costs"], ["#waiver", "Waiver"], ["#calendar", "Dates"], ["#help", "Help"]];
-
 function Index() {
   return (
     <div className="min-h-screen">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2">Skip to content</a>
-       <div className="sticky top-0 z-40 border-b-2 border-gold bg-primary text-primary-foreground">
-        <div className="mx-auto flex h-14 max-w-[1040px] items-center justify-between gap-4 px-5">
-          <a href="#top" className="whitespace-nowrap text-sm font-semibold">UC SHIP<span className="hidden sm:inline">, made clear</span></a>
-          <nav aria-label="Sections" className="-mr-2 flex overflow-x-auto text-sm">
-             {NAV.map(([h, l]) => <a key={h} href={h} className="whitespace-nowrap rounded px-2 py-2 text-primary-foreground/85 hover:text-gold focus-visible:outline-gold">{l}</a>)}
-          </nav>
-        </div>
-      </div>
+      <Navigation />
       <main id="main" className="mx-auto max-w-[1040px] px-5" >
         <div id="top" />
         <Hero />
