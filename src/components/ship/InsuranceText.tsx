@@ -2,6 +2,7 @@ import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useSt
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
 import { Button } from "./ui";
+import { firstTermOccurrence } from "@/lib/term-occurrences";
 
 const words = Object.keys(INSURANCE_TERMS).sort((a, b) => b.length - a.length).map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
 const pattern = new RegExp(`\\b(${words.join("|")})(s)?\\b`, "gi");
@@ -37,7 +38,7 @@ function Term({ label, term }: { label: string; term: string }) {
   </>;
 }
 
-export function explainTerms(children: ReactNode): ReactNode {
+export function explainTerms(children: ReactNode, seen = new Set<string>()): ReactNode {
   return Children.map(children, (child) => {
     if (typeof child === "string") {
       const parts: ReactNode[] = [];
@@ -46,7 +47,7 @@ export function explainTerms(children: ReactNode): ReactNode {
         const index = match.index;
         const term = match[1]?.toLowerCase();
         if (!term) continue;
-        parts.push(child.slice(start, index), <Term key={`${index}-${term}`} label={match[0]} term={term} />);
+        parts.push(child.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
         start = index + match[0].length;
       }
       parts.push(child.slice(start));
@@ -54,6 +55,6 @@ export function explainTerms(children: ReactNode): ReactNode {
     }
     if (!isValidElement<{ children?: ReactNode }>(child)) return child;
     if (child.type === Button || child.type === Term || ["a", "button", "svg", "summary", "input", "label", "option"].includes(String(child.type))) return child;
-    return cloneElement(child, {}, explainTerms(child.props.children));
+    return cloneElement(child, {}, explainTerms(child.props.children, seen));
   });
 }
