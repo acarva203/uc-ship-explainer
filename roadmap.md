@@ -8,3 +8,4 @@
 - [ ] Finish translations in Spanish, Simplified Chinese, Vietnamese, Korean and Hindi; translation service is rate-limited, and remaining phrases need review.
 - [x] Add visible control affordances, a stronger language-selector border and wrapping coverage labels; verify no phone overflow or page errors.
 - [ ] Complete the accessibility audit, including keyboard, 200% zoom and computed contrast checks; the named better-accessibility skill was unavailable.
+- [ ] Refresh waiver deadline status automatically when the date changes or the guide is reopened.
