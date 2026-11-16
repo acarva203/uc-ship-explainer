@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+<!-- AGENT-MEMORY:BEGIN -->
+- All UC SHIP facts live in `src/data/ucship.ts` with source URLs; components read from it — keeps figures verifiable and single-sourced.
+- Cost/deadline logic is pure in `src/lib/ship-math.ts` with tests in `src/test/ship-math.test.ts` — math must stay testable.
+<!-- AGENT-MEMORY:END -->

@@ -25,7 +25,7 @@ const ROWS: Row[] = [
     </ul>), src: SRC.mental },
   { id: "cov-rx", icon: "rx", title: "Prescriptions", carrier: "Optum Rx", desc: "Copays depend on drug type. Show your Anthem ID card at pharmacies outside SHCS.",
     stat: "$5", statLabel: "Generic, 30-day supply (SHCS or network pharmacy)",
-    note: "Network: SHCS Pharmacy and Optum Rx pharmacies including CVS and Walgreens. No referral concept applies.",
+    note: "Network: SHCS Pharmacy (usually the lowest copay) and Optum Rx pharmacies including CVS and Walgreens.",
     details: (<table className="w-full text-left text-sm"><caption className="sr-only">Prescription copays, 30-day supply</caption>
       <thead><tr className="text-muted-foreground"><th className="py-1 font-normal">Type</th><th className="font-normal">SHCS</th><th className="font-normal">Network</th></tr></thead>
       <tbody className="num">
