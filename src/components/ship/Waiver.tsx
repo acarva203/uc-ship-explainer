@@ -74,7 +74,9 @@ const day = (iso: string) => { const [y, m, d] = parseISO(iso); return Date.UTC(
 export function Calendar() {
   const [sys, setSys] = useState<Sys>("quarter");
   const terms = COVERAGE[sys];
-  const start = day(terms[0]!.start), end = day(terms[terms.length - 1]!.end) + 1;
+  const first = terms[0], last = terms.at(-1);
+  if (!first || !last) return null;
+  const start = day(first.start), end = day(last.end) + 1;
   return (<Translated>
     <Section id="calendar" eyebrow="Coverage calendar" title="When you’re covered"
       intro="Coverage runs in back-to-back terms. Summer is included at no extra charge if you’re enrolled in UC SHIP for spring.">
@@ -84,7 +86,7 @@ export function Calendar() {
           const w = ((day(t.end) + 1 - day(t.start)) / (end - start)) * 100;
           return (
             <li key={t.name} className="fade-in md:flex-[var(--w)]" style={{ ["--w" as string]: w.toFixed(2) }}>
-              <div className={`flex h-10 items-center overflow-hidden rounded-sm px-3 text-sm font-medium ${t.summer ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
+              <div className={`flex min-h-10 flex-wrap items-center gap-2 rounded-sm px-3 py-2 text-sm font-medium ${t.summer ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
                 {t.name}{t.summer && <span className="ml-auto rounded-sm bg-gold px-1.5 text-xs text-foreground">+ summer</span>}
               </div>
               <p className="num mt-2 text-xs"><time dateTime={t.start}>{formatDate(t.start)}</time> – <time dateTime={t.end}>{formatDate(t.end)}</time></p>

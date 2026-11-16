@@ -146,4 +146,7 @@
 .insurance-term:hover, .insurance-term[aria-expanded="true"] { color: var(--primary); }
 .term-definition { width: 300px; max-width: calc(100vw - 32px); }
 @layer base {
+  button:not(:disabled), select:not(:disabled), summary, a[href] { cursor: pointer; }
+  button:disabled, select:disabled { cursor: not-allowed; }
+  select { border-color: var(--color-muted-foreground); }
 }
