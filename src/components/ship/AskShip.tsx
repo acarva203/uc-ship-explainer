@@ -17,6 +17,7 @@ export function AskShip() {
   const busy = useRef(false);
   return <section aria-labelledby="ask-ship-title" className="print-hide border-t border-border py-8">
     <div className="flex items-center gap-2 text-primary"><Search size={18} aria-hidden /><h2 id="ask-ship-title" className="text-lg font-medium"><Text>Ask about UC SHIP</Text></h2></div>
+    <p className="mt-2 text-xs text-muted-foreground"><Text>This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.</Text></p>
     <form className="mt-4" onSubmit={async (event) => {
       event.preventDefault();
       if (busy.current || !question.trim()) return;
@@ -41,7 +42,7 @@ export function AskShip() {
         {answer.entries.length === 0 && <p className="mt-3 text-sm"><Text>No matching guidance found. Contact SHCS for your question.</Text> <Src href={SRC.contacts}>UC SHIP contacts</Src></p>}
         <ul className="mt-3 divide-y divide-border">{answer.entries.map((entry) => <li key={entry.id} className="py-3">
           <h3 className="text-sm font-semibold"><Text>{entry.title}</Text></h3>
-          <p className="mt-1 text-sm text-muted-foreground"><Text>{entry.text}</Text> <Src href={entry.href}>Official page ↗</Src></p>
+          <p className="mt-1 text-sm text-muted-foreground"><Text>{entry.text}</Text> <Src href={entry.href} /></p>
           {"cost" in entry && <p className="mt-2 text-sm"><Text>At SHCS</Text>: <Text>{entry.campus}</Text> · <Text>In network</Text>: <Text>{entry.cost}</Text> <Src href={entry.href} /></p>}
           {"phone" in entry && <a href="tel:+15307522349" className="text-sm text-primary underline">{entry.phone}</a>}
           {entry.id === "premium" && <a href="#costs" className="mt-2 inline-block text-sm text-primary underline"><Text>Check costs</Text></a>}
