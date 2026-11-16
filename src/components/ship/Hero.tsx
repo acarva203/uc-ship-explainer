@@ -30,7 +30,7 @@ export function CoverageHub() {
           </a>
         ))}
       </svg>
-      <figcaption className="sr-only">Coverage areas: Medical, Mental health, Prescriptions, Dental, Vision.</figcaption>
+      <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted-foreground">Gold center: your UC SHIP plan · White circles: included care areas · Gray lines: connected to the same plan</figcaption>
     </figure>
   );
 }

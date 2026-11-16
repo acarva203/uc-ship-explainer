@@ -39,6 +39,7 @@ export function Waiver() {
         <h3 className="font-semibold">2026–27 waiver deadlines</h3>
         <Segmented label="Term system" value={sys} onChange={setSys} options={SYS_OPTS} />
       </div>
+      <p className="mt-4 text-xs leading-relaxed text-muted-foreground">Blue dots: upcoming regular deadlines · Gray dots: passed dates · Gold outlined dots: upcoming late-waiver dates · Gold labels: late fee applies</p>
       <ol className="mt-6 border-l border-border" aria-label={`Waiver deadlines for ${sys} students`}>
         {DEADLINES[sys].map((d) => {
           const st = today ? deadlineStatus(d.date, today) : null;
@@ -90,7 +91,8 @@ export function Calendar() {
           );
         })}
       </ol>
-      <p className="mt-4 text-xs text-muted-foreground"><Src href={SRC.insurance}>Official coverage dates</Src></p>
+      <p className="mt-4 text-xs leading-relaxed text-muted-foreground">Light blue: earlier coverage terms · Dark blue: the spring term that includes summer · Gold: summer included at no extra charge</p>
+      <p className="mt-2 text-xs text-muted-foreground"><Src href={SRC.insurance}>Official coverage dates</Src></p>
     </Section>
   );
 }

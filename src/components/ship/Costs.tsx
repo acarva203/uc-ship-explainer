@@ -26,7 +26,10 @@ export function Costs() {
         <span className="num text-xl font-medium">{usd(p.annual)}</span> <span className="text-muted-foreground">per year ({p.terms} {p.term}s)</span>
       </p>
       <figure className="mt-5">
-        <figcaption className="sr-only">Annual premium by student category, 2026–27</figcaption>
+        <figcaption className="mb-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="flex items-center gap-2"><span aria-hidden className="size-3 rounded-sm bg-primary" />Dark blue: selected student category</span>
+          <span className="flex items-center gap-2"><span aria-hidden className="size-3 rounded-sm bg-chart-4" />Light blue: other student categories</span>
+        </figcaption>
         <ul className="space-y-2.5">
           {(Object.keys(PREMIUMS) as Category[]).map((k) => {
             const x = PREMIUMS[k]; const on = k === cat;
@@ -87,9 +90,9 @@ function CostSplit() {
         <div className="bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)]" style={{ width: `${pct(s.plan)}%` }} />
       </div>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-4">
-        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 rounded-sm bg-gold" />Deductible</dt><dd className="num font-medium">{usd(s.deductiblePart)}</dd></div>
-        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 rounded-sm bg-primary" />20% coinsurance</dt><dd className="num font-medium">{usd(s.coinsurancePart)}</dd></div>
-        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 rounded-sm border border-border bg-accent" />Plan pays</dt><dd className="num font-medium">{usd(s.plan)}</dd></div>
+        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 shrink-0 rounded-sm bg-gold" />Gold: your deductible</dt><dd className="num font-medium">{usd(s.deductiblePart)}</dd></div>
+        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 shrink-0 rounded-sm bg-primary" />Blue: your 20% coinsurance</dt><dd className="num font-medium">{usd(s.coinsurancePart)}</dd></div>
+        <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 shrink-0 rounded-sm border border-border bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)]" />Light blue stripes: plan pays</dt><dd className="num font-medium">{usd(s.plan)}</dd></div>
         <div className="sm:border-l sm:border-border sm:pl-4"><dt className="text-muted-foreground">You pay</dt><dd className="num text-lg font-semibold">{usd(s.you)}</dd></div>
       </dl>
       <p className="mt-3 text-xs text-muted-foreground num">
