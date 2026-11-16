@@ -408,5 +408,16 @@
   "Contacts": "联系方式",
   "Choose an eye care provider": "选择眼科服务提供者",
   "The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.": "保险计划为网络外牙科服务最多支付 $750。这笔金额计入合计 $1,200 的年度牙科保险给付上限。",
-  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "在保险开始在每个福利年度分摊这些费用之前，您为某些承保服务支付的金额。并非所有服务都适用免赔额。"
+  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "在保险开始在每个福利年度分摊这些费用之前，您为某些承保服务支付的金额。并非所有服务都适用免赔额。",
+  "Ask about UC SHIP": "咨询 UC SHIP",
+  "Your question about care, referrals or costs": "您关于就医、转诊或费用的问题",
+  "Do I need a referral to see a therapist off campus?": "在校外看心理治疗师需要转诊吗？",
+  "Your question is sent to AI. Don’t include names, student IDs, insurance IDs or private medical details.": "您的问题会发送给 AI。请勿提供姓名、学号、保险编号或私人医疗信息。",
+  "Finding guidance…": "正在查找相关信息…",
+  "Find guidance": "查找相关信息",
+  "AI guidance is unavailable right now. Use the care guide or contact SHCS.": "AI 查询暂时不可用。请查看就医指南或联系 SHCS。",
+  "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "由于使用额度不可用，AI 查询已暂停。指南的其他部分仍可使用。",
+  "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "这些是 AI 匹配的独立 2026–27 指南摘录，并非承保决定。请向 SHCS 和官方保险文件确认详情。",
+  "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "本工具无法评估症状。遇到紧急情况，请拨打 911。如需咨询，请致电 SHCS：(530) 752-2349。",
+  "No matching guidance found. Contact SHCS for your question.": "未找到相关信息。请就您的问题联系 SHCS。"
 }

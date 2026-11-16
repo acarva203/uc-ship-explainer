@@ -408,5 +408,16 @@
   "Contacts": "Thông tin liên hệ",
   "Choose an eye care provider": "Chọn cơ sở chăm sóc mắt",
   "The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.": "Chương trình trả tối đa $750 cho dịch vụ nha khoa ngoài mạng lưới. Khoản này được tính vào tổng hạn mức quyền lợi nha khoa $1,200 mỗi năm.",
-  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "Số tiền bạn trả cho một số dịch vụ được bao trả trước khi bảo hiểm bắt đầu chia sẻ những chi phí đó mỗi năm phúc lợi. Không phải dịch vụ nào cũng áp dụng khoản khấu trừ."
+  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "Số tiền bạn trả cho một số dịch vụ được bao trả trước khi bảo hiểm bắt đầu chia sẻ những chi phí đó mỗi năm phúc lợi. Không phải dịch vụ nào cũng áp dụng khoản khấu trừ.",
+  "Ask about UC SHIP": "Hỏi về UC SHIP",
+  "Your question about care, referrals or costs": "Câu hỏi về khám chữa bệnh, giấy giới thiệu hoặc chi phí",
+  "Do I need a referral to see a therapist off campus?": "Tôi có cần giấy giới thiệu để gặp nhà trị liệu ngoài trường không?",
+  "Your question is sent to AI. Don’t include names, student IDs, insurance IDs or private medical details.": "Câu hỏi được gửi đến AI. Đừng cung cấp tên, mã sinh viên, mã bảo hiểm hoặc thông tin y tế riêng tư.",
+  "Finding guidance…": "Đang tìm thông tin…",
+  "Find guidance": "Tìm thông tin",
+  "AI guidance is unavailable right now. Use the care guide or contact SHCS.": "Tìm kiếm bằng AI hiện không khả dụng. Hãy xem hướng dẫn khám chữa bệnh hoặc liên hệ SHCS.",
+  "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "Tìm kiếm bằng AI tạm dừng vì không có tín dụng sử dụng. Phần còn lại của hướng dẫn vẫn hoạt động.",
+  "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "Đây là các đoạn từ hướng dẫn độc lập 2026–27 được AI chọn, không phải quyết định về bảo hiểm. Xác nhận chi tiết với SHCS và tài liệu chính thức.",
+  "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "Công cụ này không thể đánh giá triệu chứng. Trong trường hợp cấp cứu, gọi 911. Để được tư vấn, gọi SHCS theo số (530) 752-2349.",
+  "No matching guidance found. Contact SHCS for your question.": "Không tìm thấy thông tin phù hợp. Hãy liên hệ SHCS về câu hỏi của bạn."
 }

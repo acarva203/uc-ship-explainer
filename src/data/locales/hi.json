@@ -396,5 +396,16 @@
   "Contacts": "संपर्क",
   "Choose an eye care provider": "आँखों की देखभाल का सेवा प्रदाता चुनें",
   "The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.": "नेटवर्क के बाहर दंत इलाज के लिए योजना अधिकतम $750 देती है। यह राशि दंत लाभ की कुल $1,200 वार्षिक अधिकतम सीमा में गिनी जाती है।",
-  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "हर लाभ वर्ष में कुछ कवर की गई सेवाओं के लिए वह राशि जो बीमा के खर्च बाँटना शुरू करने से पहले आपको देनी होती है। डिडक्टिबल हर सेवा पर लागू नहीं होता।"
+  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "हर लाभ वर्ष में कुछ कवर की गई सेवाओं के लिए वह राशि जो बीमा के खर्च बाँटना शुरू करने से पहले आपको देनी होती है। डिडक्टिबल हर सेवा पर लागू नहीं होता।",
+  "Ask about UC SHIP": "UC SHIP के बारे में पूछें",
+  "Your question about care, referrals or costs": "इलाज, रेफ़रल या खर्च से जुड़ा आपका सवाल",
+  "Do I need a referral to see a therapist off campus?": "परिसर के बाहर थेरेपिस्ट से मिलने के लिए क्या रेफ़रल चाहिए?",
+  "Your question is sent to AI. Don’t include names, student IDs, insurance IDs or private medical details.": "आपका सवाल AI को भेजा जाता है। नाम, छात्र पहचान संख्या, बीमा पहचान संख्या या निजी चिकित्सा जानकारी न लिखें।",
+  "Finding guidance…": "जानकारी खोज रहे हैं…",
+  "Find guidance": "जानकारी खोजें",
+  "AI guidance is unavailable right now. Use the care guide or contact SHCS.": "अभी AI से जानकारी उपलब्ध नहीं है। इलाज की मार्गदर्शिका देखें या SHCS से संपर्क करें।",
+  "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "उपयोग क्रेडिट उपलब्ध न होने के कारण AI से जानकारी रोक दी गई है। बाकी मार्गदर्शिका काम करती है।",
+  "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "ये इस स्वतंत्र 2026–27 मार्गदर्शिका से AI द्वारा चुनी गई जानकारी है, कवरेज का फैसला नहीं। SHCS और आधिकारिक योजना दस्तावेज़ों से विवरण की पुष्टि करें।",
+  "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "यह उपकरण लक्षणों का आकलन नहीं कर सकता। आपात स्थिति में 911 पर फ़ोन करें। सलाह के लिए SHCS को (530) 752-2349 पर फ़ोन करें।",
+  "No matching guidance found. Contact SHCS for your question.": "संबंधित जानकारी नहीं मिली। अपने सवाल के लिए SHCS से संपर्क करें।"
 }
