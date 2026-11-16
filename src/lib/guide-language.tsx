@@ -13,6 +13,17 @@ export function translate(text: string, language: Language): string {
   const translated = catalogs[language]?.[trimmed];
   return translated ? text.replace(text.trim(), translated) : text;
 }
+// Translate a whole sentence before inserting values; never translate sentence fragments.
+export function message(text: string, language: Language, values: Record<string, string | number> = {}): string {
+  return translate(text, language).replace(/\{(\w+)\}/g, (match, key: string) => String(values[key] ?? match));
+}
+export function Message({ children, values }: { children: string; values?: Record<string, string | number> }) {
+  const { language } = useLanguage();
+  return message(children, language, values);
+}
+export function localDate(date: Date, language: Language, short = false): string {
+  return date.toLocaleDateString(language === "en" ? "en-US" : language, { month: short ? "short" : "long", day: "numeric", year: "numeric" });
+}
 const LanguageContext = createContext<{ language: Language; setLanguage: (value: Language) => void }>({ language: "en", setLanguage: () => {} });
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
