@@ -24,10 +24,10 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <LanguageProvider><div className="min-h-screen">
+    <LanguageProvider><div className="min-h-dvh">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2">Skip to content</a>
       <Navigation />
-      <main id="main" className="mx-auto max-w-[1040px] px-5" >
+      <main id="main" tabIndex={-1} className="mx-auto max-w-[1040px] px-5" >
         <div id="top" />
         <Hero />
         <Navigator />

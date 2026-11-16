@@ -1,5 +1,5 @@
 import { Text, translate, type Language } from "@/lib/guide-language";
-import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { Children, cloneElement, isValidElement, useEffect, useLayoutEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
 import { Button } from "./ui";
@@ -11,16 +11,29 @@ const pattern = new RegExp(`\\b(${words.join("|")})(s)?\\b`, "gi");
 function Term({ label, term }: { label: string; term: string }) {
   const id = useId();
   const trigger = useRef<HTMLButtonElement>(null);
+  const tooltip = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     const dismissOthers = (event: Event) => { if ((event as CustomEvent<string>).detail !== id) setPosition(null); };
     const dismiss = () => setPosition(null);
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") dismiss(); };
+    const onOutside = (event: PointerEvent) => { if (event.target instanceof Node && !trigger.current?.contains(event.target) && !tooltip.current?.contains(event.target)) dismiss(); };
     window.addEventListener("insurance-term-open", dismissOthers);
     window.addEventListener("scroll", dismiss, true);
     window.addEventListener("resize", dismiss);
-    return () => { window.removeEventListener("insurance-term-open", dismissOthers); window.removeEventListener("scroll", dismiss, true); window.removeEventListener("resize", dismiss); if (timer.current) clearTimeout(timer.current); };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("pointerdown", onOutside);
+    return () => { window.removeEventListener("insurance-term-open", dismissOthers); window.removeEventListener("scroll", dismiss, true); window.removeEventListener("resize", dismiss); window.removeEventListener("keydown", onKey); window.removeEventListener("pointerdown", onOutside); if (timer.current) clearTimeout(timer.current); };
   }, [id]);
+  useLayoutEffect(() => {
+    if (!position) return;
+    const box = tooltip.current?.getBoundingClientRect();
+    const anchor = trigger.current?.getBoundingClientRect();
+    if (!box || !anchor) return;
+    const top = anchor.bottom + 8 + box.height <= window.innerHeight - 16 ? anchor.bottom + 8 : Math.max(16, anchor.top - box.height - 8);
+    if (top !== position.top) setPosition({ ...position, top });
+  }, [position]);
   function hideSoon() { timer.current = setTimeout(() => setPosition(null), 160); }
   function show() {
     if (timer.current) clearTimeout(timer.current);
@@ -35,7 +48,7 @@ function Term({ label, term }: { label: string; term: string }) {
       onMouseEnter={show} onMouseLeave={hideSoon} onFocus={show} onBlur={() => setPosition(null)} onClick={show} onKeyDown={(e) => { if (e.key === "Escape") { e.preventDefault(); setPosition(null); } }}>
       <Text>{label}</Text>
     </Button>
-    {position && createPortal(<div id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={show} onMouseLeave={hideSoon}><p className="mb-1 font-medium"><Text>{label}</Text></p><Text>{INSURANCE_TERMS[term] ?? term}</Text></div>, document.body)}
+    {position && createPortal(<div ref={tooltip} id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={() => { if (timer.current) clearTimeout(timer.current); }} onMouseLeave={hideSoon}><p className="mb-1 font-medium"><Text>{label}</Text></p><Text>{INSURANCE_TERMS[term] ?? term}</Text></div>, document.body)}
   </>;
 }
 

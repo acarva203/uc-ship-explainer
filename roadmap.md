@@ -7,4 +7,5 @@
 - [x] Define each term only at its first occurrence within a content box; verify with focused tests.
 - [ ] Finish translations in Spanish, Simplified Chinese, Vietnamese, Korean and Hindi; translation service is rate-limited, and remaining phrases need review.
 - [x] Add visible control affordances, a stronger language-selector border and wrapping coverage labels; verify no phone overflow or page errors.
-- [ ] Complete the accessibility audit, including keyboard, 200% zoom and computed contrast checks; the named better-accessibility skill was unavailable.
+- [x] Complete the better-accessibility audit: keyboard flows, 320px, 200% text, computed contrast and automated checks; real screen-reader output remains unverified.
+- [x] Refresh waiver deadline status automatically at midnight and on tab focus/visibility; verified the December 1 deadline switches to passed in the guide.

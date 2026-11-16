@@ -1,5 +1,6 @@
 import { Translated } from "./Translated";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useLiveDate } from "@/hooks/use-live-date";
 import { Details, Section, Segmented, Src } from "./ui";
 import { COVERAGE, DEADLINES, SRC } from "@/data/ucship";
 import { deadlineStatus, formatDate, parseISO } from "@/lib/ship-math";
@@ -7,15 +8,9 @@ import { deadlineStatus, formatDate, parseISO } from "@/lib/ship-math";
 type Sys = "quarter" | "semester";
 const SYS_OPTS = [{ value: "quarter" as Sys, label: "Quarter · undergrad, grad" }, { value: "semester" as Sys, label: "Semester · law, vet" }];
 
-function useToday() {
-  const [t, setT] = useState<Date | null>(null);
-  useEffect(() => setT(new Date()), []);
-  return t;
-}
-
 export function Waiver() {
   const [sys, setSys] = useState<Sys>("quarter");
-  const today = useToday();
+  const today = useLiveDate();
   const steps = [
     ["Check your plan", "Your plan must meet all UC Davis waiver requirements.", SRC.criteria],
     ["Gather documents", "Insurance ID card and plan benefits summary, as PDF or JPG.", SRC.waiver],

@@ -50,7 +50,7 @@ export function Costs() {
       <p className="mt-3 text-xs text-muted-foreground">Financial aid offers for 2026–27 include a loan component for UC SHIP. <Src href={SRC.insurance}>SHCS insurance page (table captioned “2026-27 Academic Year”)</Src></p>
 
       <h3 className="mt-14 font-semibold">Common visit costs</h3>
-      <div className="mt-4 overflow-x-auto">
+      <div role="region" aria-label="Common visit costs" tabIndex={0} className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[560px] text-left text-sm">
           <caption className="sr-only">What you pay for common services at SHCS and in the Anthem network, 2026–27</caption>
           <thead className="text-xs text-muted-foreground"><tr><th className="pb-2 pr-3 font-normal">Service</th><th className="pb-2 pr-3 font-normal">At SHCS</th><th className="pb-2 pr-3 font-normal">In network</th><th className="pb-2 pr-3 font-normal">What to know</th></tr></thead>
@@ -86,7 +86,7 @@ function CostSplit() {
         For an in-network hospital stay, you pay the first {usd(MEDICAL.deductible)}, then 20% of the remaining covered allowed amount. Your share stops at the {usd(MEDICAL.oopMax)} out-of-pocket max. This example assumes you haven’t paid toward your deductible or out-of-pocket max this year. <Src href={SRC.medical} />
       </p>
       <label htmlFor="allowed" className="mt-6 block text-sm">Example amount covered at the insurer’s agreed rate: <span className="num font-medium">{usd(amt)}</span></label>
-      <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
+      <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} aria-valuetext={usd(amt)} aria-describedby="cost-result" onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
       <div className="mt-4 flex h-8 w-full overflow-hidden rounded-sm border border-border" role="img" aria-label={`Of ${usd(amt)}: deductible ${usd(s.deductiblePart)}, coinsurance ${usd(s.coinsurancePart)}, plan pays ${usd(s.plan)}.`}>
         <div className="bg-gold" style={{ width: `${pct(s.deductiblePart)}%` }} />
         <div className="bg-primary" style={{ width: `${pct(s.coinsurancePart)}%` }} />
@@ -98,7 +98,7 @@ function CostSplit() {
         <div><dt className="flex items-center gap-2 text-muted-foreground"><span aria-hidden className="size-3 shrink-0 rounded-sm border border-border bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)]" />Light blue stripes: plan pays</dt><dd className="num font-medium">{usd(s.plan)}</dd></div>
         <div className="sm:border-l sm:border-border sm:pl-4"><dt className="text-muted-foreground">You pay</dt><dd className="num text-lg font-semibold">{usd(s.you)}</dd></div>
       </dl>
-      <p className="mt-3 text-xs text-muted-foreground num">
+      <p id="cost-result" className="mt-3 text-xs text-muted-foreground num">
         {usd(s.deductiblePart)} + {usd(s.coinsurancePart)} = {usd(s.you)} you · {usd(s.you)} + {usd(s.plan)} = {usd(amt)} total{s.capped ? " · capped at the out-of-pocket max" : ""}
       </p>
       <p className="prose-w mt-4 text-xs text-muted-foreground">Many services waive the deductible and use a flat copay instead (office visits, urgent care, ER). Real costs depend on the service, network, referral and what you’ve already paid this year.</p>
