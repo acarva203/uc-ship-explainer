@@ -51,7 +51,7 @@ export function Hero() {
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
         {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Machine translations have not been professionally reviewed. Official plan documents govern; source links open in their original language.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">
-          {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.")} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
+          {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.", new Set(), language)} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
         <nav aria-label="Start here" className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <a href="#navigator" className="inline-flex min-h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">I need care</a>

@@ -13,6 +13,7 @@ function TranslatedElement({ element }: { element: ReactElement<{ children?: Rea
   const props: { "aria-label"?: string; title?: string } = {};
   if (element.props["aria-label"]) props["aria-label"] = translate(element.props["aria-label"], language);
   if (element.props.title) props.title = translate(element.props.title, language);
+  if (["title", "option", "textarea"].includes(String(element.type)) && typeof element.props.children === "string") return cloneElement(element, props, translate(element.props.children, language));
   return cloneElement(element, props, translatedTree(element.props.children));
 }
 export function Translated({ children }: { children: ReactNode }) { return <>{translatedTree(children)}</>; }

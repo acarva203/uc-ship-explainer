@@ -5,6 +5,7 @@ import { Section, Segmented, Src } from "./ui";
 import { explainTerms } from "./InsuranceText";
 import { MEDICAL, PREMIUMS, SRC, VISITS, type Category } from "@/data/ucship";
 import { splitCost } from "@/lib/ship-math";
+import { useLanguage } from "@/lib/guide-language";
 
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: n % 1 ? 2 : 0 });
 
@@ -71,6 +72,7 @@ export function Costs() {
 }
 
 function CostSplit() {
+  const { language } = useLanguage();
   const [amt, setAmt] = useState(2000);
   const s = splitCost(amt, MEDICAL.deductible, MEDICAL.inpatientCoinsurance, MEDICAL.oopMax);
   const pct = (n: number) => (amt ? (n / amt) * 100 : 0);
@@ -100,6 +102,6 @@ function CostSplit() {
         {usd(s.deductiblePart)} + {usd(s.coinsurancePart)} = {usd(s.you)} you · {usd(s.you)} + {usd(s.plan)} = {usd(amt)} total{s.capped ? " · capped at the out-of-pocket max" : ""}
       </p>
       <p className="prose-w mt-4 text-xs text-muted-foreground">Many services waive the deductible and use a flat copay instead (office visits, urgent care, ER). Real costs depend on the service, network, referral and what you’ve already paid this year.</p>
-    </> )}</div></Translated>
+    </>, new Set(), language )}</div></Translated>
   );
 }

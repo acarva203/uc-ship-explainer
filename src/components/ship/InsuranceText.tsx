@@ -1,4 +1,4 @@
-import { Text } from "@/lib/guide-language";
+import { Text, translate, type Language } from "@/lib/guide-language";
 import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
@@ -39,14 +39,18 @@ function Term({ label, term }: { label: string; term: string }) {
   </>;
 }
 
-export function explainTerms(children: ReactNode, seen = new Set<string>()): ReactNode {
+export function explainTerms(children: ReactNode, seen = new Set<string>(), language: Language = "en"): ReactNode {
+  const localized = new Map(Object.keys(INSURANCE_TERMS).map((term) => [translate(term, language).toLowerCase(), term]));
+  const localWords = [...localized.keys()].sort((a,b) => b.length-a.length).map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const matcher = language === "en" ? pattern : new RegExp(`(${localWords.join("|")})`, "gi");
   return Children.map(children, (child) => {
     if (typeof child === "string") {
+      child = translate(child, language);
       const parts: ReactNode[] = [];
       let start = 0;
-      for (const match of child.matchAll(pattern)) {
+      for (const match of child.matchAll(matcher)) {
         const index = match.index;
-        const term = match[1]?.toLowerCase();
+        const term = language === "en" ? match[1]?.toLowerCase() : localized.get(match[1]?.toLowerCase() ?? "");
         if (!term) continue;
         parts.push(child.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
         start = index + match[0].length;
@@ -56,6 +60,6 @@ export function explainTerms(children: ReactNode, seen = new Set<string>()): Rea
     }
     if (!isValidElement<{ children?: ReactNode }>(child)) return child;
     if (child.type === Button || child.type === Term || ["a", "button", "svg", "summary", "input", "label", "option"].includes(String(child.type))) return child;
-    return cloneElement(child, {}, explainTerms(child.props.children, seen));
+    return cloneElement(child, {}, explainTerms(child.props.children, seen, language));
   });
 }
