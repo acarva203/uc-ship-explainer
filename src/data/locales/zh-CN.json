@@ -419,5 +419,11 @@
   "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "由于使用额度不可用，AI 查询已暂停。指南的其他部分仍可使用。",
   "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "这些是 AI 匹配的独立 2026–27 指南摘录，并非承保决定。请向 SHCS 和官方保险文件确认详情。",
   "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "本工具无法评估症状。遇到紧急情况，请拨打 911。如需咨询，请致电 SHCS：(530) 752-2349。",
-  "No matching guidance found. Contact SHCS for your question.": "未找到相关信息。请就您的问题联系 SHCS。"
+  "No matching guidance found. Contact SHCS for your question.": "未找到相关信息。请就您的问题联系 SHCS。",
+  "New conversation": "新对话",
+  "Conversation": "对话",
+  "Writing an answer…": "正在撰写回答…",
+  "Stop": "停止",
+  "Send": "发送",
+  "Answers are not saved and are not a coverage decision.": "回答不会被保存，也不代表承保决定。"
 }

@@ -419,5 +419,11 @@
   "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "Tìm kiếm bằng AI tạm dừng vì không có tín dụng sử dụng. Phần còn lại của hướng dẫn vẫn hoạt động.",
   "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "Đây là các đoạn từ hướng dẫn độc lập 2026–27 được AI chọn, không phải quyết định về bảo hiểm. Xác nhận chi tiết với SHCS và tài liệu chính thức.",
   "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "Công cụ này không thể đánh giá triệu chứng. Trong trường hợp cấp cứu, gọi 911. Để được tư vấn, gọi SHCS theo số (530) 752-2349.",
-  "No matching guidance found. Contact SHCS for your question.": "Không tìm thấy thông tin phù hợp. Hãy liên hệ SHCS về câu hỏi của bạn."
+  "No matching guidance found. Contact SHCS for your question.": "Không tìm thấy thông tin phù hợp. Hãy liên hệ SHCS về câu hỏi của bạn.",
+  "New conversation": "Cuộc trò chuyện mới",
+  "Conversation": "Cuộc trò chuyện",
+  "Writing an answer…": "Đang viết câu trả lời…",
+  "Stop": "Dừng",
+  "Send": "Gửi",
+  "Answers are not saved and are not a coverage decision.": "Câu trả lời không được lưu và không phải là quyết định bảo hiểm."
 }
