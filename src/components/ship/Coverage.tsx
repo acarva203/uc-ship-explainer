@@ -35,7 +35,7 @@ const ROWS: Row[] = [
         <tr className="border-t border-border"><td className="py-1">Specialty</td><td colSpan={2}>10% up to $250</td></tr>
       </tbody></table>), src: SRC.rx },
   { id: "cov-dental", icon: "dental", title: "Dental", carrier: "Delta Dental", desc: "Two checkups and cleanings a year, plus fillings, root canals and crowns with cost sharing.",
-    stat: "$1,200", statLabel: "Annual dental benefit maximum — the most the plan pays",
+    stat: "$1,200", statLabel: "Annual dental benefit maximum (the most the plan pays)",
     note: "No referral needed. Choose the Delta Dental PPO network specifically.",
     details: (<><p className="mb-2 rounded bg-gold-soft px-2 py-1 text-gold-foreground">Not the same as the medical out-of-pocket max: the dental maximum caps what the <em>plan</em> pays; the medical max caps what <em>you</em> pay.</p>
       <ul className="list-disc space-y-1 pl-4">
@@ -58,7 +58,7 @@ const ROWS: Row[] = [
 export function Coverage() {
   return (
     <Section id="coverage" eyebrow="Coverage" title="What the plan covers"
-      intro="Five benefit areas, each run by a different company with its own network. Open any row for limits.">
+      intro="Medical, mental health, prescriptions, dental and vision are included. The provider networks and payment rules differ by benefit.">
       <ul className="divide-y divide-border border-y border-border">
         {ROWS.map((r) => (
           <li key={r.id} id={r.id} className="grid gap-4 py-7 md:grid-cols-[56px_1fr_220px] md:gap-8">

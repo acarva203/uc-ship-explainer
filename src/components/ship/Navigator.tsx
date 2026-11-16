@@ -7,7 +7,7 @@ type Step = { title: string; body: string; tag?: string };
 type Path = { key: string; label: string; icon: IconName; summary: string; referral: "Yes, outside SHCS" | "No" | "Depends"; steps: Step[]; exceptions?: string[]; cost: string; next: { label: string; href: string }; src: string };
 
 const PATHS: Path[] = [
-  { key: "doctor", label: "Doctor’s visit", icon: "medical", referral: "Yes, outside SHCS", summary: "SHCS is your primary care home. Off-campus medical care usually needs an SHCS referral first.",
+  { key: "doctor", label: "Doctor’s visit", icon: "medical", referral: "Yes, outside SHCS", summary: "Start with SHCS for primary care. You usually need its referral before getting medical care off campus.",
     steps: [
       { title: "Start at SHCS", body: "Book with Student Health and Counseling Services. Visits there cost $0.", tag: "(530) 752-2349" },
       { title: "Get a referral when required", body: "If SHCS can’t provide the service, it refers you. Without a needed referral, care may not be covered." },
@@ -23,10 +23,10 @@ const PATHS: Path[] = [
       { title: "Outside therapist? Get a referral", body: "For an Anthem network provider outside SHCS, get an SHCS referral first." },
     ],
     cost: "SHCS and network mental health office visits $0 · LiveHealth Online therapy $0", next: { label: "Mental health coverage", href: SRC.mental }, src: SRC.mental },
-  { key: "urgent", label: "Urgent care", icon: "urgent", referral: "No", summary: "For problems that can’t wait for a regular appointment but aren’t emergencies. This guide can’t judge urgency—call the advice nurse if unsure.",
+  { key: "urgent", label: "Urgent care", icon: "urgent", referral: "No", summary: "For problems that can’t wait for a regular appointment but aren’t emergencies. Not sure how urgent it is? Call the advice nurse. This guide can’t assess symptoms.",
     steps: [
       { title: "Call the advice nurse", body: "Free 24/7 nurse advice for students.", tag: "(530) 752-2349" },
-      { title: "SHCS or a network urgent care", body: "SHCS urgent care is $0. Off campus, pick an urgent care clinic in the Anthem network—no referral needed." },
+      { title: "SHCS or a network urgent care", body: "SHCS urgent care is $0. Off campus, choose an Anthem network urgent care clinic. You don’t need a referral." },
       { title: "Or a virtual visit", body: "LiveHealth Online doctors are available 24/7, no referral." },
     ],
     cost: "SHCS urgent care $0 · Network urgent care $45 copay, deductible waived", next: { label: "Where to get care now", href: SRC.whereCare }, src: SRC.medical },
@@ -37,7 +37,7 @@ const PATHS: Path[] = [
       { title: "Book a checkup", body: "Two checkups and cleanings per year at $0 in network." },
     ],
     cost: "In-network checkup and cleaning $0 · Fillings 20% after $25 deductible", next: { label: "Dental coverage", href: SRC.dental }, src: SRC.dental },
-  { key: "vision", label: "Vision", icon: "vision", referral: "No", summary: "Book an eye exam directly—on campus or with an Anthem Blue View Vision Insight provider.",
+  { key: "vision", label: "Vision", icon: "vision", referral: "No", summary: "Book an eye exam on campus or with an Anthem Blue View Vision Insight provider. No referral needed.",
     steps: [
       { title: "On campus or off", body: "SHCS Optometry Clinic and Optical Shop, or search Anthem for “Blue View Vision Insight.”" },
       { title: "Book an exam", body: "One routine exam per benefit year." },
@@ -51,7 +51,7 @@ export function Navigator() {
   const p = PATHS.find((x) => x.key === sel)!;
   return (
     <Section id="navigator" eyebrow="Care navigator" title="What do you need help with?"
-      intro="Pick a type of care to see where to start and whether you need a referral. This explains insurance steps—it doesn’t assess symptoms.">
+      intro="A referral is SHCS approval to get covered care elsewhere. Whether you need one depends on the care you’re getting. This guide doesn’t assess symptoms.">
       <p role="note" className="flex items-start gap-3 rounded-lg border border-destructive/40 px-4 py-3 text-sm">
         <span aria-hidden className="mt-0.5 font-semibold text-destructive">!</span>
         <span><strong className="font-semibold">For an emergency, call <a href="tel:911" className="underline underline-offset-4">911</a> or go to the nearest emergency room.</strong> No referral needed.</span>

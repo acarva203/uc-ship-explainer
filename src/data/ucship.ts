@@ -37,17 +37,17 @@ export type Deadline = { label: string; date: string; kind: "standard" | "late" 
 export const DEADLINES: Record<"quarter" | "semester", Deadline[]> = {
   quarter: [
     { label: "Fall, Winter & Spring quarters", date: "2026-09-01", kind: "standard" },
-    { label: "Late waiver — Fall", date: "2026-10-01", kind: "late" },
+    { label: "Late waiver: Fall", date: "2026-10-01", kind: "late" },
     { label: "Winter & Spring quarters only", date: "2026-12-01", kind: "standard" },
-    { label: "Late waiver — Winter", date: "2027-01-01", kind: "late" },
+    { label: "Late waiver: Winter", date: "2027-01-01", kind: "late" },
     { label: "Spring quarter only", date: "2027-03-01", kind: "standard" },
-    { label: "Late waiver — Spring", date: "2027-04-01", kind: "late" },
+    { label: "Late waiver: Spring", date: "2027-04-01", kind: "late" },
   ],
   semester: [
     { label: "Fall & Spring semesters", date: "2026-08-15", kind: "standard" },
-    { label: "Late waiver — Fall", date: "2026-09-15", kind: "late" },
+    { label: "Late waiver: Fall", date: "2026-09-15", kind: "late" },
     { label: "Spring semester only", date: "2026-12-01", kind: "standard" },
-    { label: "Late waiver — Spring", date: "2027-01-01", kind: "late" },
+    { label: "Late waiver: Spring", date: "2027-01-01", kind: "late" },
   ],
 };
 
@@ -70,8 +70,8 @@ export const MEDICAL = { deductible: 250, oopMax: 4500, oonDeductible: 500, oonO
 export const VISITS = [
   { icon: "medical", service: "Office visit (primary or specialty)", shcs: "$0", network: "$25 copay, deductible waived", note: "Network visit needs an SHCS referral. Labs and X-rays are extra.", src: SRC.medical },
   { icon: "mental", service: "Mental health office visit", shcs: "$0", network: "$0, deductible waived", note: "Referral needed outside SHCS, except LiveHealth Online.", src: SRC.medical },
-  { icon: "virtual", service: "LiveHealth Online virtual visit", shcs: "—", network: "$0, deductible waived", note: "No referral needed.", src: SRC.medical },
+  { icon: "virtual", service: "LiveHealth Online virtual visit", shcs: "Not an SHCS service", network: "$0, deductible waived", note: "No referral needed.", src: SRC.medical },
   { icon: "urgent", service: "Urgent care", shcs: "$0", network: "$45 copay, deductible waived", note: "No referral needed at urgent care clinics.", src: SRC.medical },
-  { icon: "er", service: "Emergency room", shcs: "—", network: "$250 copay, waived if admitted", note: "No referral needed. Same $250 copay out of network.", src: SRC.medical },
+  { icon: "er", service: "Emergency room", shcs: "SHCS is not an ER", network: "$250 copay, waived if admitted", note: "No referral needed. Same $250 copay out of network.", src: SRC.medical },
   { icon: "rx", service: "Generic prescription (30 days)", shcs: "$5", network: "$5 copay", note: "SHCS Pharmacy or Optum Rx network (CVS, Walgreens).", src: SRC.rx },
 ] as const;
