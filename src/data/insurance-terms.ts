@@ -1,7 +1,7 @@
 export const INSURANCE_TERMS: Record<string, string> = {
   premium: "The price you pay to keep your insurance, even if you never visit a doctor. This is separate from what you pay for care.",
   copay: "A fixed amount you pay for a covered service, such as a doctor’s visit. The plan pays the rest of the covered amount.",
-  deductible: "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. Some services skip it.",
+  deductible: "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.",
   coinsurance: "Your percentage of a covered cost, usually after the deductible. With 20% coinsurance, you pay $20 of a $100 covered amount.",
   referral: "Approval from Student Health and Counseling Services (SHCS) to get covered care elsewhere. Some types of care don’t need it.",
   "out-of-pocket max": "The yearly limit on what you pay for covered care under the plan’s rules. Premiums and uncovered charges don’t count. Network and out-of-network limits differ.",

@@ -48,7 +48,7 @@ export function Hero() {
           <span aria-hidden className="text-border">/</span>
           <span className="font-medium text-gold-foreground">{PLAN_YEAR}</span>
         </div>
-         <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
+         <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC Davis UC SHIP guide</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
         {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Translations have been checked for completeness and consistency, but not professionally reviewed. Official plan documents govern; source links open in their original language.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">

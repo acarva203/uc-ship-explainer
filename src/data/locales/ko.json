@@ -394,5 +394,19 @@
   "HMO": "HMO",
   "PPO": "PPO",
   "formularies": "보장 약품 목록",
-  ". No referral needed.": ". 진료 의뢰는 필요하지 않습니다."
+  ". No referral needed.": ". 진료 의뢰는 필요하지 않습니다.",
+  "Print guide": "안내서 인쇄",
+  "Sources and links": "출처 및 링크",
+  "UC Davis UC SHIP guide": "UC Davis UC SHIP 안내서",
+  "How to get care": "진료받는 방법",
+  "Plan premiums and care costs": "보험료와 진료비",
+  "How to opt out of UC SHIP": "UC SHIP 가입 면제 신청 방법",
+  "Renew your waiver each year": "매년 가입 면제 다시 신청하기",
+  "Care within 50 miles": "50마일 이내 의료 서비스",
+  "Coverage dates": "보험 보장 기간",
+  "Insurance terms": "보험 용어",
+  "Contacts": "연락처",
+  "Choose an eye care provider": "눈 진료 기관 선택",
+  "The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.": "네트워크 외 치과 진료에 대해 보험은 최대 $750를 지급합니다. 이 금액은 연간 치과 보험금 지급 한도 $1,200에 포함됩니다.",
+  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "보험이 각 혜택 연도에 해당 비용을 공유하기 시작하기 전에 특정 보장 서비스에 대해 지불하는 금액입니다. 공제액은 모든 서비스에 적용되는 것은 아닙니다."
 }

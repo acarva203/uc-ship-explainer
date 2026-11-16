@@ -25,7 +25,7 @@ export function Help() {
   const { language } = useLanguage();
   return (<Translated>
     <>
-      <Section id="terms" eyebrow="Vocabulary" title="Useful terms">
+      <Section id="terms" eyebrow="Vocabulary" title="Insurance terms">
         <div className="grid gap-x-10 md:grid-cols-2">
           {TERMS.map(([t, d]) => (
             <details key={t} className="group border-b border-border">
@@ -35,7 +35,7 @@ export function Help() {
           ))}
         </div>
       </Section>
-      <Section id="help" eyebrow="Real help" title="Who to contact">
+      <Section id="help" eyebrow="Contacts" title="Who to contact">
         <dl className="divide-y divide-border border-y border-border">
           {CONTACTS.map((c) => (
             <div key={c.who} className="grid gap-1 py-4 md:grid-cols-[260px_1fr_auto] md:items-baseline md:gap-6">
