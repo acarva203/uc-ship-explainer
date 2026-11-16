@@ -2,7 +2,7 @@ import { Translated } from "./Translated";
 import { Icon, type IconName } from "./icons";
 import { PLAN_YEAR, SRC } from "@/data/ucship";
 import { explainTerms } from "./InsuranceText";
-import { useLanguage } from "@/lib/guide-language";
+import { message, useLanguage } from "@/lib/guide-language";
 
 const NODES: { id: string; label: string; icon: IconName; x: number; y: number }[] = [
   { id: "cov-medical", label: "Medical", icon: "medical", x: 200, y: 38 },
@@ -13,6 +13,7 @@ const NODES: { id: string; label: string; icon: IconName; x: number; y: number }
 ];
 
 export function CoverageHub() {
+  const { language } = useLanguage();
   return (<Translated>
     <figure className="mx-auto w-full max-w-[320px] md:max-w-[420px]">
       <svg viewBox="-20 0 440 340" role="group" aria-labelledby="hub-title hub-desc" className="w-full text-primary">
@@ -25,10 +26,10 @@ export function CoverageHub() {
         <g transform="translate(176 140) scale(1.7)" className="text-primary"><Icon name="shield" className="" width={28} height={28} /></g>
         <text x="200" y="204" textAnchor="middle" fontSize="12" fontWeight="600" fill="var(--color-primary)">UC SHIP</text>
         {NODES.map((n) => (
-          <a key={n.id} href={`#${n.id}`} className="group outline-none" aria-label={`${n.label} coverage`}>
+          <a key={n.id} href={`#${n.id}`} className="group outline-none" aria-label={message("{area} coverage", language, { area: message(n.label, language) })}>
             <circle cx={n.x} cy={n.y} r="26" fill="var(--color-background)" stroke="var(--color-foreground)" strokeOpacity=".7" strokeWidth="1.25" className="transition-colors group-hover:fill-[var(--color-accent)] group-focus-visible:stroke-[var(--color-ring)] group-focus-visible:[stroke-width:3]" />
             <g transform={`translate(${n.x - 13.3} ${n.y - 13.3}) scale(0.95)`} style={{ color: "var(--color-foreground)" }}><Icon name={n.icon} className="" width={28} height={28} /></g>
-            <text x={n.x} y={n.y + 46} textAnchor="middle" fontSize="15" fontWeight="500" fill="var(--color-foreground)" className="underline-offset-4 group-hover:underline">{n.label}</text>
+            <text x={n.x} y={n.y + 46} textAnchor="middle" fontSize="15" fontWeight="500" fill="var(--color-foreground)" className="underline-offset-4 group-hover:underline">{message(n.label, language).split("\n").map((line, i) => <tspan key={i} x={n.x} dy={i ? 18 : 0}>{line}</tspan>)}</text>
           </a>
         ))}
       </svg>
@@ -49,7 +50,7 @@ export function Hero() {
         </div>
          <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
-        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Translations are incomplete and have not been professionally reviewed. Some text remains in English; official plan documents govern.</p>}
+        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Translations have been checked for completeness and consistency, but not professionally reviewed. Official plan documents govern; source links open in their original language.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">
           {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.", new Set(), language)} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
