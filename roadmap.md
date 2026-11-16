@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Add AI Gateway question matching with sourced guidance, selected-language results, safe failure states and live verification.
+
 - [x] Add a print-friendly guide preserving the selected language, visual legends and key links; checked PDFs in six languages and disclosure restoration.
 - [x] Clarify guide titles and apply de-ai to all guide text without altering facts or losing translations; reviewed all guide wording and translated the changed titles and explanations.
 

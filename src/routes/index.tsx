@@ -8,6 +8,7 @@ import { Calendar, Waiver } from "@/components/ship/Waiver";
 import { Help } from "@/components/ship/Help";
 import { Navigation } from "@/components/ship/Navigation";
 import { PrintSupport } from "@/components/ship/PrintSupport";
+import { AskShip } from "@/components/ship/AskShip";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,6 +32,7 @@ function Index() {
       <main id="main" tabIndex={-1} className="mx-auto max-w-[1040px] px-5" >
         <div id="top" />
         <Hero />
+        <AskShip />
         <Navigator />
         <Coverage />
         <Costs />
