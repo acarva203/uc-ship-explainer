@@ -20,7 +20,7 @@ describe("Language preference and insurance values", () => {
   });
   it.each(["es", "zh-CN", "vi", "ko", "hi"] as const)("preserves cost amounts when interpolating %s", (language) => {
     const result = message("Of {amount}: deductible {deductible}, coinsurance {coinsurance}, plan pays {plan}.", language, { amount: "$10,000", deductible: "$250", coinsurance: "$1,950", plan: "$7,800" });
-    expect(result.match(/\$[\d,]+/g)?.sort()).toEqual(["$10,000", "$250", "$1,950", "$7,800"].sort());
+    expect(result.match(/\$\d+(?:,\d{3})*/g)?.sort()).toEqual(["$10,000", "$250", "$1,950", "$7,800"].sort());
     expect(result).not.toContain("{amount}");
   });
   it.each(["es", "zh-CN", "vi", "ko", "hi"] as const)("keeps the same calendar deadline in %s", (language) => {
