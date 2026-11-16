@@ -3,9 +3,10 @@ import es from "@/data/locales/es.json";
 import zh from "@/data/locales/zh-CN.json";
 import vi from "@/data/locales/vi.json";
 import ko from "@/data/locales/ko.json";
-export const LANGUAGES = [{ code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "zh-CN", label: "简体中文" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" }] as const;
+import hi from "@/data/locales/hi.json";
+export const LANGUAGES = [{ code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "zh-CN", label: "简体中文" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }] as const;
 export type Language = typeof LANGUAGES[number]["code"];
-const catalogs: Record<string, Record<string, string>> = { es, "zh-CN": zh, vi, ko };
+const catalogs: Record<string, Record<string, string>> = { es, "zh-CN": zh, vi, ko, hi };
 export function translate(text: string, language: Language): string {
   if (language === "en") return text;
   const trimmed = text.trim().replace(/\s+/g, " ");

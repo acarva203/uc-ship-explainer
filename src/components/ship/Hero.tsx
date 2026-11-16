@@ -49,7 +49,7 @@ export function Hero() {
         </div>
          <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
-        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Machine translations have not been professionally reviewed. Official plan documents govern; source links open in their original language.</p>}
+        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Translations are incomplete and have not been professionally reviewed. Some text remains in English; official plan documents govern.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">
           {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.", new Set(), language)} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
