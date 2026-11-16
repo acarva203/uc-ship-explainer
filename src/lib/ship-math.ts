@@ -21,7 +21,7 @@ export function deadlineStatus(isoDate: string, today: Date): "upcoming" | "pass
 export function millisecondsUntilNextDay(now: Date): number {
   return Math.max(1, new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime() - now.getTime());
 }
-export function formatDate(iso: string) {
+export function formatDate(iso: string, locale = "en-US") {
   const [y, m, d] = parseISO(iso);
-  return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  return new Date(y, m - 1, d).toLocaleDateString(locale === "en" ? "en-US" : locale, { month: "long", day: "numeric", year: "numeric" });
 }

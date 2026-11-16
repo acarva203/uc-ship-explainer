@@ -1,4 +1,4 @@
-import { LanguageProvider } from "@/lib/guide-language";
+import { LanguageProvider, Text } from "@/lib/guide-language";
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/ship/Hero";
 import { Navigator } from "@/components/ship/Navigator";
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <LanguageProvider><div className="min-h-dvh">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2">Skip to content</a>
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2"><Text>Skip to content</Text></a>
       <Navigation />
       <main id="main" tabIndex={-1} className="mx-auto max-w-[1040px] px-5" >
         <div id="top" />

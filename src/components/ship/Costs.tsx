@@ -5,7 +5,7 @@ import { Section, Segmented, Src } from "./ui";
 import { explainTerms } from "./InsuranceText";
 import { MEDICAL, PREMIUMS, SRC, VISITS, type Category } from "@/data/ucship";
 import { splitCost } from "@/lib/ship-math";
-import { useLanguage } from "@/lib/guide-language";
+import { Message, message, useLanguage } from "@/lib/guide-language";
 
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: n % 1 ? 2 : 0 });
 
@@ -23,9 +23,9 @@ export function Costs() {
       <h3 className="mt-12 font-semibold">Premiums, 2026–27</h3>
       <div className="mt-3"><Segmented label="Student category" value={cat} onChange={setCat} options={[{ value: "undergrad", label: "Undergraduate" }, { value: "grad", label: "Graduate" }, { value: "lawvet", label: "Law / Veterinary" }]} /></div>
       <p className="mt-5 text-sm" aria-live="polite">
-        <span className="num text-xl font-medium">{usd(p.perTerm)}</span> <span className="text-muted-foreground">per {p.term}</span>
+        <span className="num text-xl font-medium">{usd(p.perTerm)}</span> <span className="text-muted-foreground"><Message>{p.term === "quarter" ? "per quarter" : "per semester"}</Message></span>
         <span className="mx-3 text-border">|</span>
-        <span className="num text-xl font-medium">{usd(p.annual)}</span> <span className="text-muted-foreground">per year ({p.terms} {p.term}s)</span>
+        <span className="num text-xl font-medium">{usd(p.annual)}</span> <span className="text-muted-foreground"><Message values={{ count: p.terms }}>{p.term === "quarter" ? "per year ({count} quarters)" : "per year ({count} semesters)"}</Message></span>
       </p>
       <figure className="mt-5">
         <figcaption className="mb-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
@@ -36,11 +36,11 @@ export function Costs() {
           {(Object.keys(PREMIUMS) as Category[]).map((k) => {
             const x = PREMIUMS[k]; const on = k === cat;
             return (
-              <li key={k} className="grid grid-cols-[110px_1fr] items-center gap-3 text-sm sm:grid-cols-[140px_1fr]">
+              <li key={k} className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] items-center gap-3 text-sm">
                 <span className={on ? "font-medium" : "text-muted-foreground"}>{x.label}</span>
-                <div className="flex items-center gap-2">
-                  <div className={`h-5 rounded-sm transition-colors ${on ? "bg-primary" : "bg-chart-4"}`} style={{ width: `${(x.annual / max) * 70}%` }} />
-                  <span className="num whitespace-nowrap text-xs">{usd(x.annual)}/yr · {usd(x.perTerm)}/{x.term}</span>
+                <div className="min-w-0">
+                  <div className={`h-5 rounded-sm transition-colors ${on ? "bg-primary" : "bg-chart-4"}`} style={{ width: `${(x.annual / max) * 100}%` }} />
+                  <span className="num mt-1 block text-xs"><Message values={{ annual: usd(x.annual), term: usd(x.perTerm) }}>{x.term === "quarter" ? "{annual}/year · {term}/quarter" : "{annual}/year · {term}/semester"}</Message></span>
                 </div>
               </li>
             );
@@ -83,11 +83,11 @@ function CostSplit() {
         <span className="rounded bg-gold-soft px-2 py-0.5 text-xs font-medium text-gold-foreground">Illustration only. Not a bill estimate.</span>
       </div>
       <p className="prose-w mt-2 text-sm text-muted-foreground">
-        For an in-network hospital stay, you pay the first {usd(MEDICAL.deductible)}, then 20% of the remaining covered allowed amount. Your share stops at the {usd(MEDICAL.oopMax)} out-of-pocket max. This example assumes you haven’t paid toward your deductible or out-of-pocket max this year. <Src href={SRC.medical} />
+        {message("For an in-network hospital stay, you pay the first {deductible}, then 20% of the remaining covered allowed amount. Your share stops at the {max} out-of-pocket max. This example assumes you haven’t paid toward your deductible or out-of-pocket max this year.", language, { deductible: usd(MEDICAL.deductible), max: usd(MEDICAL.oopMax) })} <Src href={SRC.medical} />
       </p>
       <label htmlFor="allowed" className="mt-6 block text-sm">Example amount covered at the insurer’s agreed rate: <span className="num font-medium">{usd(amt)}</span></label>
-      <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} aria-valuetext={usd(amt)} aria-describedby="cost-result" onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
-      <div className="mt-4 flex h-8 w-full overflow-hidden rounded-sm border border-border" role="img" aria-label={`Of ${usd(amt)}: deductible ${usd(s.deductiblePart)}, coinsurance ${usd(s.coinsurancePart)}, plan pays ${usd(s.plan)}.`}>
+      <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} aria-valuetext={message("{amount} US dollars", language, { amount: amt.toLocaleString(language) })} aria-describedby="cost-result" onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
+      <div className="mt-4 flex h-8 w-full overflow-hidden rounded-sm border border-border" role="img" aria-label={message("Of {amount}: deductible {deductible}, coinsurance {coinsurance}, plan pays {plan}.", language, { amount: usd(amt), deductible: usd(s.deductiblePart), coinsurance: usd(s.coinsurancePart), plan: usd(s.plan) })}>
         <div className="bg-gold" style={{ width: `${pct(s.deductiblePart)}%` }} />
         <div className="bg-primary" style={{ width: `${pct(s.coinsurancePart)}%` }} />
         <div className="bg-accent [background-image:repeating-linear-gradient(45deg,transparent_0_6px,var(--color-border)_6px_7px)]" style={{ width: `${pct(s.plan)}%` }} />
@@ -99,7 +99,7 @@ function CostSplit() {
         <div className="sm:border-l sm:border-border sm:pl-4"><dt className="text-muted-foreground">You pay</dt><dd className="num text-lg font-semibold">{usd(s.you)}</dd></div>
       </dl>
       <p id="cost-result" className="mt-3 text-xs text-muted-foreground num">
-        {usd(s.deductiblePart)} + {usd(s.coinsurancePart)} = {usd(s.you)} you · {usd(s.you)} + {usd(s.plan)} = {usd(amt)} total{s.capped ? " · capped at the out-of-pocket max" : ""}
+        <Message values={{ deductible: usd(s.deductiblePart), coinsurance: usd(s.coinsurancePart), you: usd(s.you), plan: usd(s.plan), total: usd(amt) }}>{"{deductible} + {coinsurance} = {you} you · {you} + {plan} = {total} total"}</Message>{s.capped ? " · capped at the out-of-pocket max" : ""}
       </p>
       <p className="prose-w mt-4 text-xs text-muted-foreground">Many services waive the deductible and use a flat copay instead (office visits, urgent care, ER). Real costs depend on the service, network, referral and what you’ve already paid this year.</p>
     </>, new Set(), language )}</div></Translated>

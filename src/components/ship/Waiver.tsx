@@ -4,11 +4,13 @@ import { useLiveDate } from "@/hooks/use-live-date";
 import { Details, Section, Segmented, Src } from "./ui";
 import { COVERAGE, DEADLINES, SRC } from "@/data/ucship";
 import { deadlineStatus, formatDate, parseISO } from "@/lib/ship-math";
+import { localDate, message, useLanguage } from "@/lib/guide-language";
 
 type Sys = "quarter" | "semester";
 const SYS_OPTS = [{ value: "quarter" as Sys, label: "Quarter · undergrad, grad" }, { value: "semester" as Sys, label: "Semester · law, vet" }];
 
 export function Waiver() {
+  const { language } = useLanguage();
   const [sys, setSys] = useState<Sys>("quarter");
   const today = useLiveDate();
   const steps = [
@@ -36,20 +38,20 @@ export function Waiver() {
         <Segmented label="Term system" value={sys} onChange={setSys} options={SYS_OPTS} />
       </div>
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">Blue dots: upcoming regular deadlines · Gray dots: passed dates · Gold outlined dots: upcoming late-waiver dates · Gold labels: late fee applies</p>
-      <ol className="mt-6 border-l border-border" aria-label={`Waiver deadlines for ${sys} students`}>
+      <ol className="mt-6 border-l border-border" aria-label={message(sys === "quarter" ? "Waiver deadlines for quarter students" : "Waiver deadlines for semester students", language)}>
         {DEADLINES[sys].map((d) => {
           const st = today ? deadlineStatus(d.date, today) : null;
           return (
             <li key={d.date + d.label} className={`relative grid gap-1 py-3 pl-6 sm:grid-cols-[180px_1fr_auto] sm:items-baseline sm:gap-4 ${st === "passed" ? "text-muted-foreground" : ""}`}>
               <span aria-hidden className={`absolute -left-[5px] top-[1.2rem] size-[9px] rounded-full border ${st === "passed" ? "border-muted-foreground bg-muted-foreground" : d.kind === "late" ? "border-gold-foreground bg-background" : "border-primary bg-primary"}`} />
-              <time dateTime={d.date} className="num text-sm font-medium">{formatDate(d.date)}</time>
+              <time dateTime={d.date} className="num text-sm font-medium">{formatDate(d.date, language)}</time>
               <span className="text-sm">{d.kind === "late" ? <span className="mr-2 rounded bg-gold-soft px-1.5 py-0.5 text-xs text-gold-foreground">Late · $75 fee</span> : null}{d.label}</span>
               <span className="text-xs">{st === "passed" ? "Passed" : st === "upcoming" ? <span className="font-medium text-primary">Upcoming</span> : ""}</span>
             </li>
           );
         })}
       </ol>
-      <p className="mt-3 text-xs text-muted-foreground">Status is based on your device’s date{today ? ` (${today.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })})` : ""}. Summer-start programs get deadlines from their program. <Src href={SRC.waiver} /></p>
+      <p className="mt-3 text-xs text-muted-foreground">{message("Status is based on your device’s date{date}. Summer-start programs get deadlines from their program.", language, { date: today ? ` (${localDate(today, language)})` : "" })} <Src href={SRC.waiver} /></p>
 
       <div className="mt-10 grid gap-x-10 md:grid-cols-2">
         <Details summary="Annual renewal">Approved waivers last one academic year. Submit a new one before each year starts. If you gain coverage mid-year, you can waive the remaining terms. <Src href={SRC.waiver} /></Details>
@@ -67,6 +69,7 @@ export function Waiver() {
 const day = (iso: string) => { const [y, m, d] = parseISO(iso); return Date.UTC(y, m - 1, d) / 864e5; };
 
 export function Calendar() {
+  const { language } = useLanguage();
   const [sys, setSys] = useState<Sys>("quarter");
   const terms = COVERAGE[sys];
   const first = terms[0], last = terms.at(-1);
@@ -76,7 +79,7 @@ export function Calendar() {
     <Section id="calendar" eyebrow="Coverage calendar" title="When you’re covered"
       intro="Coverage runs in back-to-back terms. Summer is included at no extra charge if you’re enrolled in UC SHIP for spring.">
       <Segmented label="Term system" value={sys} onChange={setSys} options={SYS_OPTS} />
-      <ol className="mt-8 flex flex-col gap-3 md:flex-row md:gap-1" aria-label={`2026–27 coverage periods, ${sys} students`}>
+      <ol className="mt-8 flex flex-col gap-3 md:flex-row md:gap-1" aria-label={message(sys === "quarter" ? "2026–27 coverage periods, quarter students" : "2026–27 coverage periods, semester students", language)}>
         {terms.map((t) => {
           const w = ((day(t.end) + 1 - day(t.start)) / (end - start)) * 100;
           return (
@@ -84,7 +87,7 @@ export function Calendar() {
               <div className={`flex min-h-10 flex-wrap items-center gap-2 rounded-sm px-3 py-2 text-sm font-medium ${t.summer ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"}`}>
                 {t.name}{t.summer && <span className="ml-auto rounded-sm bg-gold px-1.5 text-xs text-foreground">+ summer</span>}
               </div>
-              <p className="num mt-2 text-xs"><time dateTime={t.start}>{formatDate(t.start)}</time> – <time dateTime={t.end}>{formatDate(t.end)}</time></p>
+              <p className="num mt-2 text-xs"><time dateTime={t.start}>{formatDate(t.start, language)}</time> – <time dateTime={t.end}>{formatDate(t.end, language)}</time></p>
             </li>
           );
         })}
