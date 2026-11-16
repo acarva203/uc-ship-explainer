@@ -36,6 +36,6 @@ use the editor.
 - Selection controls use shared native radio inputs with labeled visual targets — browser-native arrow-key selection avoids custom keyboard timing issues.
 - Waiver status uses a live local-date hook that refreshes at midnight and on focus/visibility — open tabs must not show stale deadline status.
 - Insurance definitions are single-sourced in `src/data/insurance-terms.ts` and added to reading text through InsuranceText; skip interactive labels to avoid nesting buttons.
-- Guide languages use bundled catalogs and a URL preference; interpolate whole translated messages for dynamic values and localize dates, while leaving insurance calculations, brands and official links unchanged — prevents fragment grammar and altered facts.
+- Guide languages use bundled catalogs, valid URL language first then device-local preference; read/write storage after hydration and tolerate blocked storage. Interpolate whole translated messages and localize dates while preserving calculations, brands and official links — keeps shared links intentional and returning visits consistent.
 - Print the existing guide through print CSS and beforeprint/afterprint preparation; expand and restore disclosures and deduplicate numbered source URLs so language and current interactive choices stay intact.
 <!-- AGENT-MEMORY:END -->

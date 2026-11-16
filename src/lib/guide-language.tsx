@@ -6,6 +6,7 @@ import ko from "@/data/locales/ko.json";
 import hi from "@/data/locales/hi.json";
 export const LANGUAGES = [{ code: "en", label: "English" }, { code: "es", label: "Español" }, { code: "zh-CN", label: "简体中文" }, { code: "vi", label: "Tiếng Việt" }, { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }] as const;
 export type Language = typeof LANGUAGES[number]["code"];
+export const LANGUAGE_STORAGE_KEY = "ucship-guide-language";
 const catalogs: Record<string, Record<string, string>> = { es, "zh-CN": zh, vi, ko, hi };
 export function translate(text: string, language: Language): string {
   if (language === "en") return text;
@@ -29,14 +30,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    const saved = new URLSearchParams(window.location.search).get("lang");
-    const match = LANGUAGES.find((l) => l.code === saved);
+    const requested = new URLSearchParams(window.location.search).get("lang");
+    let saved: string | null = null;
+    try { saved = window.localStorage.getItem(LANGUAGE_STORAGE_KEY); } catch { /* Device storage may be disabled. */ }
+    const match = LANGUAGES.find((l) => l.code === requested) ?? LANGUAGES.find((l) => l.code === saved);
     if (match) setLanguage(match.code);
     setReady(true);
   }, []);
   useEffect(() => {
     if (!ready) return;
     document.documentElement.lang = language;
+    try { window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language); } catch { /* The guide still works without device storage. */ }
     const url = new URL(window.location.href);
     if (language === "en") url.searchParams.delete("lang"); else url.searchParams.set("lang", language);
     window.history.replaceState(window.history.state, "", url);
