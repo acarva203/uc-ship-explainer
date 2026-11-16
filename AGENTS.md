@@ -34,4 +34,5 @@ use the editor.
 - Cost/deadline logic is pure in `src/lib/ship-math.ts` with tests in `src/test/ship-math.test.ts` — math must stay testable.
 - Section navigation uses a shared Navigation component with a native dialog on phones; native focus trapping and Escape dismissal keep all destinations keyboard-accessible.
 - Insurance definitions are single-sourced in `src/data/insurance-terms.ts` and added to reading text through InsuranceText; skip interactive labels to avoid nesting buttons.
+- Guide languages use bundled translation catalogs and React text wrappers with a URL language preference; translate display text only so insurance calculations and official links remain unchanged.
 <!-- AGENT-MEMORY:END -->

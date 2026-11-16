@@ -2,6 +2,7 @@ import { Translated } from "./Translated";
 import { Icon, type IconName } from "./icons";
 import { PLAN_YEAR, SRC } from "@/data/ucship";
 import { explainTerms } from "./InsuranceText";
+import { useLanguage } from "@/lib/guide-language";
 
 const NODES: { id: string; label: string; icon: IconName; x: number; y: number }[] = [
   { id: "cov-medical", label: "Medical", icon: "medical", x: 200, y: 38 },
@@ -37,6 +38,7 @@ export function CoverageHub() {
 }
 
 export function Hero() {
+  const { language } = useLanguage();
   return (<Translated>
     <header className="grid items-center gap-6 pb-8 pt-8 md:grid-cols-[1fr_420px] md:gap-10 md:py-12">
       <div>
@@ -47,6 +49,7 @@ export function Hero() {
         </div>
          <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
+        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Machine translations have not been professionally reviewed. Official plan documents govern; source links open in their original language.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">
           {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.")} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>

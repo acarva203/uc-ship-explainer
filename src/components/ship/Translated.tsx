@@ -4,6 +4,7 @@ export function translatedTree(children: ReactNode): ReactNode {
   return Children.map(children, (child) => {
     if (typeof child === "string") return <Text>{child}</Text>;
     if (!isValidElement<{ children?: ReactNode; "aria-label"?: string; title?: string }>(child) || child.type === Text || child.type === Translated) return child;
+    if (typeof child.type === "function" || (typeof child.type === "object" && child.type !== null)) return child;
     return <TranslatedElement element={child} />;
   });
 }
