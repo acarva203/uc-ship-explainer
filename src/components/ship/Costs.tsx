@@ -47,7 +47,7 @@ export function Costs() {
       <div className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[560px] text-left text-sm">
           <caption className="sr-only">What you pay for common services at SHCS and in the Anthem network, 2026–27</caption>
-          <thead className="text-xs text-muted-foreground"><tr><th className="pb-2 pr-3 font-normal">Service</th><th className="pb-2 pr-3 font-normal">At SHCS</th><th className="pb-2 pr-3 font-normal">In network</th><th className="pb-2 pr-3 font-normal">Qualifications</th></tr></thead>
+          <thead className="text-xs text-muted-foreground"><tr><th className="pb-2 pr-3 font-normal">Service</th><th className="pb-2 pr-3 font-normal">At SHCS</th><th className="pb-2 pr-3 font-normal">In network</th><th className="pb-2 pr-3 font-normal">What to know</th></tr></thead>
           <tbody>
             {VISITS.map((v) => (
               <tr key={v.service} className="border-t border-border align-top">
@@ -73,12 +73,12 @@ function CostSplit() {
     <div className="mt-14 rounded-lg border border-border p-5 md:p-7">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">How a deductible and coinsurance split a bill</h3>
-        <span className="rounded bg-gold-soft px-2 py-0.5 text-xs font-medium text-gold-foreground">Illustration only—not a bill estimate</span>
+        <span className="rounded bg-gold-soft px-2 py-0.5 text-xs font-medium text-gold-foreground">Illustration only. Not a bill estimate.</span>
       </div>
       <p className="prose-w mt-2 text-sm text-muted-foreground">
-        Uses UC SHIP’s network terms for a service that applies the deductible, such as an inpatient hospital stay: {usd(MEDICAL.deductible)} deductible, then 20% coinsurance, capped at the {usd(MEDICAL.oopMax)} out-of-pocket max. Assumes you haven’t paid anything toward the deductible yet this year. <Src href={SRC.medical} />
+        For an in-network hospital stay, you pay the first {usd(MEDICAL.deductible)}, then 20% of the remaining covered allowed amount. Your share stops at the {usd(MEDICAL.oopMax)} out-of-pocket max. This example assumes you haven’t paid toward your deductible or out-of-pocket max this year. <Src href={SRC.medical} />
       </p>
-      <label htmlFor="allowed" className="mt-6 block text-sm">Hypothetical covered allowed amount: <span className="num font-medium">{usd(amt)}</span></label>
+      <label htmlFor="allowed" className="mt-6 block text-sm">Example amount covered at the insurer’s agreed rate: <span className="num font-medium">{usd(amt)}</span></label>
       <input id="allowed" type="range" min={0} max={30000} step={50} value={amt} onChange={(e) => setAmt(+e.target.value)} className="mt-2 h-10 w-full accent-[var(--color-primary)]" />
       <div className="mt-4 flex h-8 w-full overflow-hidden rounded-sm border border-border" role="img" aria-label={`Of ${usd(amt)}: deductible ${usd(s.deductiblePart)}, coinsurance ${usd(s.coinsurancePart)}, plan pays ${usd(s.plan)}.`}>
         <div className="bg-gold transition-all" style={{ width: `${pct(s.deductiblePart)}%` }} />

@@ -43,9 +43,9 @@ export function Hero() {
           <span className="rounded-full bg-gold-soft px-2.5 py-1 font-medium text-gold-foreground">Plan year {PLAN_YEAR}</span>
         </div>
          <h1 className="mt-6 text-3xl font-semibold text-primary md:text-4xl">UC SHIP, made clear.</h1>
-        <p className="prose-w mt-4 text-lg text-muted-foreground">Your UC Davis health insurance—what’s covered, where to go, and what you pay.</p>
+        <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
         <p className="prose-w mt-4 text-sm text-muted-foreground">
-          Every registered UC Davis student is automatically enrolled in UC SHIP unless an approved waiver is on file. <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
+          UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver. <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
         <nav aria-label="Start here" className="mt-8 grid gap-2 sm:grid-cols-3">
           {[

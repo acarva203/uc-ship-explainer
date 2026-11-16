@@ -16,14 +16,14 @@ export function Waiver() {
   const [sys, setSys] = useState<Sys>("quarter");
   const today = useToday();
   const steps = [
-    ["Review criteria", "Your plan must meet every UC Davis criterion.", SRC.criteria],
+    ["Check your plan", "Your plan must meet all UC Davis waiver requirements.", SRC.criteria],
     ["Gather documents", "Insurance ID card and plan benefits summary, as PDF or JPG.", SRC.waiver],
     ["Submit through the portal", "Run by Academic HealthPlans; register with your student ID.", SRC.portal],
     ["Check approval", "Watch your email. Keep UC SHIP fees paid until approved.", SRC.waiver],
   ];
   return (
     <Section id="waiver" eyebrow="Waiver" title="Already insured? Check before you waive."
-      intro="Having another plan doesn’t remove UC SHIP automatically. You stay enrolled—and billed—until a waiver is approved, and you must reapply every academic year.">
+      intro="Another insurance plan doesn’t cancel UC SHIP. You stay enrolled and keep paying until your waiver is approved. Apply again each academic year.">
       <ol className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 md:grid-cols-4">
         {steps.map(([t, b, h], i) => (
           <li key={t} className="bg-background p-4">
@@ -90,7 +90,7 @@ export function Calendar() {
           );
         })}
       </ol>
-      <p className="mt-4 text-xs text-muted-foreground">Band widths are proportional to length; dates above are exact. <Src href={SRC.insurance} /></p>
+      <p className="mt-4 text-xs text-muted-foreground"><Src href={SRC.insurance}>Official coverage dates</Src></p>
     </Section>
   );
 }

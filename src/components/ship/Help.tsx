@@ -4,7 +4,7 @@ import { SOURCES_CHECKED, SRC } from "@/data/ucship";
 const TERMS = [
   ["Premium", "The price of having the plan, charged each term whether or not you use care."],
   ["Copay", "A flat amount you pay for a service, like $25 for a network office visit."],
-  ["Deductible", "What you pay for some services each benefit year before the plan starts sharing costs. Many services skip it."],
+  ["Deductible", "The amount you pay for certain covered services each benefit year before the plan shares the cost. It doesn’t apply to every service."],
   ["Coinsurance", "Your percentage share after the deductible, like 20% of an allowed amount."],
   ["Referral", "Approval from SHCS to get covered medical care elsewhere. Not needed for ER, urgent care, OB/GYN, pediatrics, LiveHealth Online, dental or vision."],
   ["Explanation of benefits", "A statement from the insurer after care showing what was billed, what the plan paid, and what you may owe. It isn’t a bill."],
@@ -47,7 +47,8 @@ export function Help() {
         <p className="mt-3"><Src href={SRC.contacts}>UC SHIP contacts</Src></p>
       </Section>
       <footer className="border-t border-border py-10 text-xs text-muted-foreground">
-        <p className="prose-w">Independent student guide—not affiliated with or endorsed by UC Davis, UC SHIP or any insurer. Figures are for the 2026–27 plan year. Sources checked {SOURCES_CHECKED}. The official benefit booklets linked above are the final word; a 2026–27 Summary of Benefits and Coverage wasn’t found on the official pages.</p>
+        <p className="prose-w">This is an independent student guide. UC Davis, UC SHIP and the insurers have not endorsed it. Figures are for the 2026–27 plan year. Sources checked {SOURCES_CHECKED}.</p>
+        <p className="prose-w mt-2">Check official plan documents for full terms. We couldn’t find a 2026–27 Summary of Benefits and Coverage or confirm that the linked medical, pharmacy and dental booklets dated 2024 reflect this plan year. The vision summary is labeled 2026–27.</p>
       </footer>
     </>
   );
