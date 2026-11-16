@@ -393,5 +393,6 @@
   "waivers": "免参保申请",
   "HMO": "HMO",
   "PPO": "PPO",
-  "formularies": "处方药目录"
+  "formularies": "处方药目录",
+  ". No referral needed.": ". 无需转介。"
 }

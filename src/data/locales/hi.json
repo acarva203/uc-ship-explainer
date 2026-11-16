@@ -381,5 +381,6 @@
   "Translations have been checked for completeness and consistency, but not professionally reviewed. Official plan documents govern; source links open in their original language.": "अनुवादों की पूर्णता और एकरूपता जाँची गई है, लेकिन पेशेवर समीक्षा नहीं हुई है। आधिकारिक योजना दस्तावेज़ ही मान्य हैं; स्रोत लिंक अपनी मूल भाषा में खुलते हैं।",
   "coinsurances": "खर्च में आपका प्रतिशत हिस्सा",
   "HMO": "HMO",
-  "PPO": "PPO"
+  "PPO": "PPO",
+  ". No referral needed.": ". रेफ़रल ज़रूरी नहीं।"
 }

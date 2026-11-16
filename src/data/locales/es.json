@@ -233,7 +233,7 @@
   "For an emergency, call": "Para una emergencia, llame",
   "911": "911",
   "or go to the nearest emergency room.": "o acudir a la sala de urgencias más cercana.",
-  "No referral needed.": "No se necesita remisión.",
+  "No referral needed.": "No necesitas una remisión.",
   "Type of care": "Tipo de atención",
   "Light blue: your selected type of care · Blue numbered circles: steps in order · Gold referral label: a referral is required or depends on the provider · Light blue referral label: no referral needed": "Azul claro: su tipo de atención seleccionado · Círculos numerados en azul: pasos en orden · Etiqueta de referencia dorada: se requiere una derivación o depende del proveedor · Etiqueta de derivación azul claro: no se necesita derivación",
   "SHCS referral needed:": "Se necesita remisión de SHCS:",
@@ -393,5 +393,6 @@
   "waivers": "exenciones",
   "HMO": "HMO",
   "PPO": "PPO",
-  "formularies": "lista de medicamentos cubiertos"
+  "formularies": "lista de medicamentos cubiertos",
+  ". No referral needed.": ". No se necesita remisión."
 }

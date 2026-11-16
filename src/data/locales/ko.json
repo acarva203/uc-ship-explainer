@@ -393,5 +393,6 @@
   "waivers": "가입 면제",
   "HMO": "HMO",
   "PPO": "PPO",
-  "formularies": "보장 약품 목록"
+  "formularies": "보장 약품 목록",
+  ". No referral needed.": ". 진료 의뢰는 필요하지 않습니다."
 }
