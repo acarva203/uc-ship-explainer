@@ -1,7 +1,7 @@
 import { Translated } from "./Translated";
 import { useState } from "react";
 import { Icon, type IconName } from "./icons";
-import { Button, Section, Src } from "./ui";
+import { Choice, ChoiceGroup, Section, Src } from "./ui";
 import { SRC } from "@/data/ucship";
 
 type Step = { title: string; body: string; tag?: string };
@@ -58,19 +58,19 @@ export function Navigator() {
         <span aria-hidden className="mt-0.5 font-semibold text-destructive">!</span>
         <span><strong className="font-semibold">For an emergency, call <a href="tel:911" className="underline underline-offset-4">911</a> or go to the nearest emergency room.</strong> No referral needed.</span>
       </p>
-      <div role="radiogroup" aria-label="Type of care" className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-5">
+      <ChoiceGroup label="Type of care" value={sel} onChange={setSel} className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-5">
         {PATHS.map((x) => {
           const on = x.key === sel;
           return (
-            <Button key={x.key} role="radio" aria-checked={on} type="button" onClick={() => setSel(x.key)}
+            <Choice key={x.key} value={x.key}
               className={`flex min-h-24 flex-col last:col-span-2 sm:last:col-span-1 items-center justify-center gap-2 rounded-lg border px-2 py-3 text-sm transition-colors ${on ? "border-primary bg-accent font-medium text-accent-foreground" : "border-border hover:border-foreground/40"}`}>
               <Icon name={x.icon} className="size-8" />{x.label}
-            </Button>
+            </Choice>
           );
         })}
-      </div>
+      </ChoiceGroup>
       <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Light blue: your selected type of care · Blue numbered circles: steps in order · Gold referral label: a referral is required or depends on the provider · Light blue referral label: no referral needed</p>
-      <div key={p.key} className="fade-in mt-8" aria-live="polite">
+      <div className="fade-in mt-8" aria-live="polite" aria-atomic="true">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <p className="prose-w">{p.summary}</p>
           <p className="text-sm"><span className="text-muted-foreground">SHCS referral needed:</span>{" "}
