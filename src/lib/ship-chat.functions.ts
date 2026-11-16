@@ -11,7 +11,7 @@ export const chatShip = createServerFn({ method: "POST" })
   .inputValidator((input) => z.object({
     language: z.enum(LANGUAGES.map((l) => l.code) as [string, ...string[]]),
     messages: z.array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().max(8000) })).min(1).max(60),
-  }).refine((d) => { const last = d.messages[d.messages.length - 1]; return last.role === "user" && last.content.trim().length > 0 && last.content.length <= CHAT_MAX_CHARS; }).parse(input))
+  }).refine((d) => { const last = d.messages[d.messages.length - 1]!; return last.role === "user" && last.content.trim().length > 0 && last.content.length <= CHAT_MAX_CHARS; }).parse(input))
   .handler(async ({ data }) => {
     const { generateResponse, GatewayError } = await import("@lovable.dev/ai-gateway");
     const languageName = LANGUAGES.find((l) => l.code === data.language)?.label ?? "English";

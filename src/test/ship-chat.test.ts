@@ -13,7 +13,7 @@ describe("ship chat", () => {
     const turns = Array.from({ length: 25 }, (_, i) => ({ role: (i % 2 ? "assistant" : "user") as "user" | "assistant", content: "x".repeat(2000) }));
     const out = trimHistory(turns);
     expect(out.length).toBeLessThanOrEqual(CHAT_MAX_TURNS);
-    expect(out[0].role).toBe("user");
-    expect(out[0].content.length).toBe(1500);
+    expect(out[0]!.role).toBe("user");
+    expect(out[0]!.content.length).toBe(1500);
   });
 });
