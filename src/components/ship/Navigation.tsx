@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui";
 
-const NAV = [["navigator", "Get care"], ["coverage", "Coverage"], ["costs", "Costs"], ["waiver", "Waiver"], ["calendar", "Dates"], ["help", "Help"]];
+const NAV: [string, string][] = [["navigator", "Get care"], ["coverage", "Coverage"], ["costs", "Costs"], ["waiver", "Waiver"], ["calendar", "Dates"], ["help", "Help"]];
 
 export function Navigation() {
   const dialog = useRef<HTMLDialogElement>(null);

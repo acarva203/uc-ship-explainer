@@ -142,5 +142,8 @@
 @utility fade-in { animation: fadein 220ms ease-out; }
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 .section-menu::backdrop { background: color-mix(in oklch, var(--foreground) 30%, transparent); }
+.insurance-term { display: inline; min-height: 0; padding: 0; border-radius: 0; font: inherit; color: inherit; text-align: inherit; text-decoration: underline dotted; text-decoration-color: var(--muted-foreground); text-underline-offset: 4px; cursor: help; }
+.insurance-term:hover, .insurance-term[aria-expanded="true"] { color: var(--primary); }
+.term-definition { width: 300px; max-width: calc(100vw - 32px); }
 @layer base {
 }

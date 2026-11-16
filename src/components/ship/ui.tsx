@@ -1,15 +1,16 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { explainTerms } from "./InsuranceText";
 
-export function Button({ className = "", ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button {...props} className={`inline-flex min-h-11 items-center justify-center rounded-md px-4 text-sm font-medium transition-colors focus-visible:outline-ring ${className}`} />;
-}
+export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(function Button({ className = "", ...props }, ref) {
+  return <button {...props} ref={ref} className={`inline-flex min-h-11 items-center justify-center rounded-md px-4 text-sm font-medium transition-colors focus-visible:outline-ring ${className}`} />;
+});
 export function Section({ id, eyebrow, title, intro, children }: { id: string; eyebrow: string; title: string; intro?: ReactNode; children: ReactNode }) {
   return (
     <section id={id} aria-labelledby={`${id}-h`} className={`border-t border-border py-12 ${id === "coverage" || id === "terms" || id === "help" ? "md:py-14" : "md:py-16"}`}>
       {!["coverage", "costs", "waiver", "calendar"].includes(id) && <p className="eyebrow">{eyebrow}</p>}
        <h2 id={`${id}-h`} className="mt-2 text-xl font-medium text-foreground md:text-2xl">{title}</h2>
-      {intro && <div className="prose-w mt-3 text-muted-foreground">{intro}</div>}
-      <div className="mt-8">{children}</div>
+      {intro && <div className="prose-w mt-3 text-muted-foreground">{explainTerms(intro)}</div>}
+      <div className="mt-8">{explainTerms(children)}</div>
     </section>
   );
 }

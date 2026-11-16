@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Icon } from "./icons";
 import { Section, Segmented, Src } from "./ui";
+import { explainTerms } from "./InsuranceText";
 import { MEDICAL, PREMIUMS, SRC, VISITS, type Category } from "@/data/ucship";
 import { splitCost } from "@/lib/ship-math";
 
@@ -70,7 +71,7 @@ function CostSplit() {
   const s = splitCost(amt, MEDICAL.deductible, MEDICAL.inpatientCoinsurance, MEDICAL.oopMax);
   const pct = (n: number) => (amt ? (n / amt) * 100 : 0);
   return (
-    <div className="mt-14 rounded-lg border border-border p-5 md:p-7">
+    <div className="mt-14 rounded-lg border border-border p-5 md:p-7">{explainTerms(<>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">How a deductible and coinsurance split a bill</h3>
         <span className="rounded bg-gold-soft px-2 py-0.5 text-xs font-medium text-gold-foreground">Illustration only. Not a bill estimate.</span>
@@ -95,6 +96,6 @@ function CostSplit() {
         {usd(s.deductiblePart)} + {usd(s.coinsurancePart)} = {usd(s.you)} you · {usd(s.you)} + {usd(s.plan)} = {usd(amt)} total{s.capped ? " · capped at the out-of-pocket max" : ""}
       </p>
       <p className="prose-w mt-4 text-xs text-muted-foreground">Many services waive the deductible and use a flat copay instead (office visits, urgent care, ER). Real costs depend on the service, network, referral and what you’ve already paid this year.</p>
-    </div>
+    </> )}</div>
   );
 }

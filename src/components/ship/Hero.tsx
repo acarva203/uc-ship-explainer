@@ -1,5 +1,6 @@
 import { Icon, type IconName } from "./icons";
 import { PLAN_YEAR, SRC } from "@/data/ucship";
+import { explainTerms } from "./InsuranceText";
 
 const NODES: { id: string; label: string; icon: IconName; x: number; y: number }[] = [
   { id: "cov-medical", label: "Medical", icon: "medical", x: 200, y: 38 },
@@ -46,7 +47,7 @@ export function Hero() {
          <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
         <p className="prose-w mt-4 text-sm text-muted-foreground">
-          UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver. <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
+          {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.")} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
         <nav aria-label="Start here" className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <a href="#navigator" className="inline-flex min-h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">I need care</a>
