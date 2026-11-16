@@ -61,7 +61,7 @@ export function Navigator() {
           const on = x.key === sel;
           return (
             <button key={x.key} role="radio" aria-checked={on} type="button" onClick={() => setSel(x.key)}
-              className={`flex min-h-24 flex-col items-center justify-center gap-2 rounded-lg border px-2 py-3 text-sm transition-colors ${on ? "border-primary bg-accent font-medium text-accent-foreground" : "border-border hover:border-foreground/40"}`}>
+              className={`flex min-h-24 flex-col last:col-span-2 sm:last:col-span-1 items-center justify-center gap-2 rounded-lg border px-2 py-3 text-sm transition-colors ${on ? "border-primary bg-accent font-medium text-accent-foreground" : "border-border hover:border-foreground/40"}`}>
               <Icon name={x.icon} className="size-8" />{x.label}
             </button>
           );

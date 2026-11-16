@@ -28,7 +28,7 @@ function Index() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2">Skip to content</a>
       <div className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-[1040px] items-center justify-between gap-4 px-5">
-          <a href="#top" className="text-sm font-semibold">UC SHIP, made clear</a>
+          <a href="#top" className="whitespace-nowrap text-sm font-semibold">UC SHIP<span className="hidden sm:inline">, made clear</span></a>
           <nav aria-label="Sections" className="-mr-2 flex overflow-x-auto text-sm">
             {NAV.map(([h, l]) => <a key={h} href={h} className="whitespace-nowrap rounded px-2 py-2 text-muted-foreground hover:text-foreground">{l}</a>)}
           </nav>

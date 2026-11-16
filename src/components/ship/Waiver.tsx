@@ -4,7 +4,7 @@ import { COVERAGE, DEADLINES, SRC } from "@/data/ucship";
 import { deadlineStatus, formatDate, parseISO } from "@/lib/ship-math";
 
 type Sys = "quarter" | "semester";
-const SYS_OPTS = [{ value: "quarter" as Sys, label: "Quarter (undergrad, grad)" }, { value: "semester" as Sys, label: "Semester (law, vet)" }];
+const SYS_OPTS = [{ value: "quarter" as Sys, label: "Quarter · undergrad, grad" }, { value: "semester" as Sys, label: "Semester · law, vet" }];
 
 function useToday() {
   const [t, setT] = useState<Date | null>(null);

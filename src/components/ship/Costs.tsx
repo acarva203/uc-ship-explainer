@@ -47,7 +47,7 @@ export function Costs() {
       <div className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[560px] text-left text-sm">
           <caption className="sr-only">What you pay for common services at SHCS and in the Anthem network, 2026–27</caption>
-          <thead className="text-xs text-muted-foreground"><tr><th className="pb-2 font-normal">Service</th><th className="pb-2 font-normal">At SHCS</th><th className="pb-2 font-normal">In network</th><th className="pb-2 font-normal">Qualifications</th></tr></thead>
+          <thead className="text-xs text-muted-foreground"><tr><th className="pb-2 pr-3 font-normal">Service</th><th className="pb-2 pr-3 font-normal">At SHCS</th><th className="pb-2 pr-3 font-normal">In network</th><th className="pb-2 pr-3 font-normal">Qualifications</th></tr></thead>
           <tbody>
             {VISITS.map((v) => (
               <tr key={v.service} className="border-t border-border align-top">

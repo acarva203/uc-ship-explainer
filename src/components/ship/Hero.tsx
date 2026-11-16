@@ -24,7 +24,7 @@ export function CoverageHub() {
         {NODES.map((n) => (
           <a key={n.id} href={`#${n.id}`} className="group outline-none" aria-label={`${n.label} coverage`}>
             <circle cx={n.x} cy={n.y} r="26" fill="var(--color-background)" stroke="var(--color-foreground)" strokeOpacity=".7" strokeWidth="1.25" className="transition-colors group-hover:fill-[var(--color-accent)] group-focus-visible:stroke-[var(--color-ring)] group-focus-visible:[stroke-width:3]" />
-            <g transform={`translate(${n.x - 12} ${n.y - 12}) scale(0.86)`} style={{ color: "var(--color-foreground)" }}><Icon name={n.icon} className="" width={28} height={28} /></g>
+            <g transform={`translate(${n.x - 13.3} ${n.y - 13.3}) scale(0.95)`} style={{ color: "var(--color-foreground)" }}><Icon name={n.icon} className="" width={28} height={28} /></g>
             <text x={n.x} y={n.y + 46} textAnchor="middle" fontSize="15" fontWeight="500" fill="var(--color-foreground)" className="underline-offset-4 group-hover:underline">{n.label}</text>
           </a>
         ))}
