@@ -7,7 +7,7 @@ export function prepareGuidePrint(root: HTMLElement) {
   details.forEach((detail) => { detail.open = true; });
   const links: PrintLink[] = [];
   const numbered = new Map<string, number>();
-  const anchors = Array.from(root.querySelectorAll<HTMLAnchorElement>('a[href^="https://"]')).filter((anchor) => !anchor.closest(".print-links"));
+  const anchors = Array.from(root.querySelectorAll<HTMLAnchorElement>('a[href^="https://"]')).filter((anchor) => !anchor.closest(".print-links, .print-hide"));
   const previousReferences = anchors.map((anchor) => anchor.getAttribute("data-print-reference"));
   for (const anchor of anchors) {
     const href = anchor.href;
