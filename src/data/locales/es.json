@@ -419,5 +419,11 @@
   "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "La búsqueda con IA está pausada porque no hay créditos de uso disponibles. El resto de la guía sigue funcionando.",
   "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "Fragmentos de esta guía independiente de 2026–27 seleccionados por IA, no una decisión sobre cobertura. Confirma los detalles con SHCS y los documentos oficiales del plan.",
   "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "Esta herramienta no puede evaluar síntomas. En una emergencia, llama al 911. Para pedir orientación, llama a SHCS al (530) 752-2349.",
-  "No matching guidance found. Contact SHCS for your question.": "No se encontró información relacionada. Contacta con SHCS para tu pregunta."
+  "No matching guidance found. Contact SHCS for your question.": "No se encontró información relacionada. Contacta con SHCS para tu pregunta.",
+  "New conversation": "Nueva conversación",
+  "Conversation": "Conversación",
+  "Writing an answer…": "Escribiendo una respuesta…",
+  "Stop": "Detener",
+  "Send": "Enviar",
+  "Answers are not saved and are not a coverage decision.": "Las respuestas no se guardan y no son una decisión de cobertura."
 }

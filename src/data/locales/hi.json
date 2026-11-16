@@ -407,5 +407,11 @@
   "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "उपयोग क्रेडिट उपलब्ध न होने के कारण AI से जानकारी रोक दी गई है। बाकी मार्गदर्शिका काम करती है।",
   "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "ये इस स्वतंत्र 2026–27 मार्गदर्शिका से AI द्वारा चुनी गई जानकारी है, कवरेज का फैसला नहीं। SHCS और आधिकारिक योजना दस्तावेज़ों से विवरण की पुष्टि करें।",
   "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "यह उपकरण लक्षणों का आकलन नहीं कर सकता। आपात स्थिति में 911 पर फ़ोन करें। सलाह के लिए SHCS को (530) 752-2349 पर फ़ोन करें।",
-  "No matching guidance found. Contact SHCS for your question.": "संबंधित जानकारी नहीं मिली। अपने सवाल के लिए SHCS से संपर्क करें।"
+  "No matching guidance found. Contact SHCS for your question.": "संबंधित जानकारी नहीं मिली। अपने सवाल के लिए SHCS से संपर्क करें।",
+  "New conversation": "नई बातचीत",
+  "Conversation": "बातचीत",
+  "Writing an answer…": "उत्तर लिखा जा रहा है…",
+  "Stop": "रोकें",
+  "Send": "भेजें",
+  "Answers are not saved and are not a coverage decision.": "उत्तर सहेजे नहीं जाते और ये कवरेज निर्णय नहीं हैं।"
 }

@@ -38,5 +38,5 @@ use the editor.
 - Insurance definitions are single-sourced in `src/data/insurance-terms.ts` and added to reading text through InsuranceText; skip interactive labels to avoid nesting buttons.
 - Guide languages use bundled catalogs, valid URL language first then device-local preference; read/write storage after hydration and tolerate blocked storage. Interpolate whole translated messages and localize dates while preserving calculations, brands and official links — keeps shared links intentional and returning visits consistent.
 - Print the existing guide through print CSS and beforeprint/afterprint preparation; expand and restore disclosures and deduplicate numbered source URLs so language and current interactive choices stay intact.
-- AI Gateway only selects allowlisted guidance IDs from bundled sourced entries; return translated excerpts and fixed official URLs, never generated medical advice or cost decisions, to keep answers grounded without storing student questions.
+- AI chat answers only from bundled `SHIP_GUIDANCE` facts in the selected language; links are post-filtered to the `SRC` allowlist, history is client-held and unsaved — keeps answers grounded without storing student questions.
 <!-- AGENT-MEMORY:END -->

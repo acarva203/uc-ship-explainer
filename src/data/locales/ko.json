@@ -419,5 +419,11 @@
   "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "사용 크레딧이 없어 AI 검색이 일시 중지되었습니다. 나머지 안내서는 계속 이용할 수 있습니다.",
   "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "AI가 이 독립적인 2026–27 안내서에서 선택한 내용이며 보장 여부에 대한 결정은 아닙니다. SHCS와 공식 보험 문서에서 세부 사항을 확인하세요.",
   "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "이 도구는 증상을 평가할 수 없습니다. 응급 상황에서는 911에 전화하세요. 상담은 SHCS (530) 752-2349로 전화하세요.",
-  "No matching guidance found. Contact SHCS for your question.": "관련 정보를 찾지 못했습니다. 질문은 SHCS에 문의하세요."
+  "No matching guidance found. Contact SHCS for your question.": "관련 정보를 찾지 못했습니다. 질문은 SHCS에 문의하세요.",
+  "New conversation": "새 대화",
+  "Conversation": "대화",
+  "Writing an answer…": "답변 작성 중…",
+  "Stop": "중지",
+  "Send": "보내기",
+  "Answers are not saved and are not a coverage decision.": "답변은 저장되지 않으며 보장 결정이 아닙니다."
 }
