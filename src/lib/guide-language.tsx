@@ -27,17 +27,20 @@ export function localDate(date: Date, language: Language, short = false): string
 const LanguageContext = createContext<{ language: Language; setLanguage: (value: Language) => void }>({ language: "en", setLanguage: () => {} });
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
+  const [ready, setReady] = useState(false);
   useEffect(() => {
     const saved = new URLSearchParams(window.location.search).get("lang");
     const match = LANGUAGES.find((l) => l.code === saved);
     if (match) setLanguage(match.code);
+    setReady(true);
   }, []);
   useEffect(() => {
+    if (!ready) return;
     document.documentElement.lang = language;
     const url = new URL(window.location.href);
     if (language === "en") url.searchParams.delete("lang"); else url.searchParams.set("lang", language);
     window.history.replaceState(window.history.state, "", url);
-  }, [language]);
+  }, [language, ready]);
   return <LanguageContext.Provider value={{ language, setLanguage }}>{children}</LanguageContext.Provider>;
 }
 export function useLanguage() { return useContext(LanguageContext); }

@@ -1,4 +1,4 @@
-import { Text, translate, type Language } from "@/lib/guide-language";
+import { Message, Text, translate, type Language } from "@/lib/guide-language";
 import { Children, cloneElement, isValidElement, useEffect, useLayoutEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
@@ -72,7 +72,7 @@ export function explainTerms(children: ReactNode, seen = new Set<string>(), lang
       return parts;
     }
     if (!isValidElement<{ children?: ReactNode }>(child)) return child;
-    if (child.type === Button || child.type === Term || ["a", "button", "svg", "summary", "input", "label", "option"].includes(String(child.type))) return child;
+    if (child.type === Button || child.type === Term || child.type === Message || child.type === Text || ["a", "button", "svg", "summary", "input", "label", "option"].includes(String(child.type))) return child;
     return cloneElement(child, {}, explainTerms(child.props.children, seen, language));
   });
 }
