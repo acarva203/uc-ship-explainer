@@ -28,12 +28,12 @@ export function Navigation() {
 
   return (<Translated>
     <div className="sticky top-0 z-40 border-b-2 border-gold bg-background">
-      <div className="mx-auto flex h-14 max-w-[1040px] items-center justify-between gap-4 px-5">
+      <div className="mx-auto flex min-h-14 max-w-[1040px] flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-1">
         <a href="#top" className="whitespace-nowrap text-sm font-semibold text-primary">UC SHIP<span className="hidden sm:inline">, made clear</span></a>
         <nav aria-label="Sections" className="hidden gap-1 text-sm lg:flex">
           {NAV.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} className={`inline-flex min-h-11 items-center border-b-2 px-2 transition-colors ${active === id ? "border-primary font-medium text-primary" : "border-transparent text-muted-foreground hover:text-foreground"}`}>{label}</a>)}
         </nav>
-        <div className="flex shrink-0 items-center gap-1">
+        <div className="flex min-w-0 flex-wrap items-center gap-1">
           <label className="sr-only" htmlFor="guide-language">{translate("Language", language)}</label>
           <select id="guide-language" value={language} onChange={(e) => { const selected = LANGUAGES.find((l) => l.code === e.target.value); if (selected) setLanguage(selected.code); }} className="min-h-11 max-w-32 rounded-md border border-border bg-background px-2 text-sm text-foreground focus-visible:outline-ring" translate="no">
             {LANGUAGES.map((l) => <option key={l.code} value={l.code}>{l.label}</option>)}
