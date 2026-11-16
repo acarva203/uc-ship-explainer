@@ -68,6 +68,7 @@ export function Navigator() {
           );
         })}
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Light blue: your selected type of care · Blue numbered circles: steps in order · Gold referral label: a referral is required or depends on the provider · Light blue referral label: no referral needed</p>
       <div key={p.key} className="fade-in mt-8" aria-live="polite">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <p className="prose-w">{p.summary}</p>
