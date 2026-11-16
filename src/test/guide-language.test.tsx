@@ -1,15 +1,48 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
-import { LanguageProvider, Message, localDate, message, useLanguage } from "@/lib/guide-language";
+import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
+import { LANGUAGE_STORAGE_KEY, LanguageProvider, Message, localDate, message, useLanguage } from "@/lib/guide-language";
 import { explainTerms } from "@/components/ship/InsuranceText";
 
 function Sample() {
   const { language, setLanguage } = useLanguage();
-  return <><select aria-label="Language" value={language} onChange={() => setLanguage("hi")}><option value="en">English</option><option value="hi">Hindi</option></select>
+  return <><select aria-label="Language" value={language} onChange={(event) => setLanguage(event.target.value === "hi" ? "hi" : "en")}><option value="en">English</option><option value="hi">Hindi</option></select>
     {explainTerms(<p><Message values={{ count: 3 }}>{"per year ({count} quarters)"}</Message></p>, new Set(), language)}</>;
 }
 
 describe("Language preference and insurance values", () => {
+  beforeEach(() => { window.localStorage.clear(); window.history.replaceState({}, "", "/"); });
+  afterEach(() => vi.restoreAllMocks());
+  it("saves a selection and restores it on a later visit without a language in the URL", async () => {
+    const first = render(<LanguageProvider><Sample /></LanguageProvider>);
+    fireEvent.change(screen.getByRole("combobox"), { target: { value: "hi" } });
+    await waitFor(() => expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("hi"));
+    first.unmount();
+    window.history.replaceState({}, "", "/#waiver");
+    render(<LanguageProvider><Sample /></LanguageProvider>);
+    await waitFor(() => expect(screen.getByRole("combobox")).toHaveValue("hi"));
+    expect(window.location.hash).toBe("#waiver");
+  });
+  it("lets an explicit English link override the saved language and remembers English", async () => {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "hi");
+    window.history.replaceState({}, "", "/?lang=en");
+    render(<LanguageProvider><Sample /></LanguageProvider>);
+    await waitFor(() => expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en"));
+    expect(screen.getByRole("combobox")).toHaveValue("en");
+  });
+  it("ignores unsupported saved languages", async () => {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, "unsupported");
+    render(<LanguageProvider><Sample /></LanguageProvider>);
+    await waitFor(() => expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en"));
+  });
+  it("keeps language selection working when device storage is blocked", async () => {
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => { throw new Error("Blocked"); });
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("Blocked"); });
+    window.history.replaceState({}, "", "/?lang=hi");
+    render(<LanguageProvider><Sample /></LanguageProvider>);
+    await waitFor(() => expect(screen.getByRole("combobox")).toHaveValue("hi"));
+    fireEvent.change(screen.getByRole("combobox"), { target: { value: "en" } });
+    expect(screen.getByRole("combobox")).toHaveValue("en");
+  });
   it("restores a requested language without deleting it during initialization", async () => {
     window.history.replaceState({}, "", "/?lang=hi#costs");
     render(<LanguageProvider><Sample /></LanguageProvider>);
