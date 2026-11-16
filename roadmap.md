@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Add a print-friendly guide preserving the selected language, visual legends and key links; verify print output and return to the guide.
+
 - [x] Add UC Davis blue and gold to the guide and verify desktop/mobile presentation.
 - [x] Apply de-ai to the guide's text while preserving insurance facts, cautions and source links.
 - [x] Apply antislop-ui and unslop UI polish after approval; verify phone menu, care controls and cost example.

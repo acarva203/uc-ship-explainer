@@ -7,6 +7,7 @@ import { Costs } from "@/components/ship/Costs";
 import { Calendar, Waiver } from "@/components/ship/Waiver";
 import { Help } from "@/components/ship/Help";
 import { Navigation } from "@/components/ship/Navigation";
+import { PrintSupport } from "@/components/ship/PrintSupport";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <LanguageProvider><div className="min-h-dvh">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2"><Text>Skip to content</Text></a>
+      <a href="#main" className="print-hide sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2"><Text>Skip to content</Text></a>
       <Navigation />
       <main id="main" tabIndex={-1} className="mx-auto max-w-[1040px] px-5" >
         <div id="top" />
@@ -36,6 +37,7 @@ function Index() {
         <Waiver />
         <Calendar />
         <Help />
+        <PrintSupport />
       </main>
     </div></LanguageProvider>
   );

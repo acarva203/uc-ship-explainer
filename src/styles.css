@@ -148,6 +148,48 @@
 .choice-control:has(input:focus-visible) { outline: 2px solid var(--color-ring); outline-offset: 2px; }
 @media (forced-colors: active) { .choice-control:has(input:focus-visible) { outline-color: Highlight; } .choice-control:has(input:checked) { border: 2px solid Highlight; } }
 .term-definition { width: 300px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; }
+.print-only { display: none; }
+@media print {
+  @page { size: auto; margin: 15mm; }
+  html { scroll-behavior: auto; }
+  body { font-size: 10pt; line-height: 1.5; }
+  * { animation: none !important; transition: none !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .print-hide, .term-definition, main nav, input[type="range"] { display: none !important; }
+  .print-only { display: block; }
+  #main { width: 100%; max-width: none; padding: 0; }
+  #main > header { grid-template-columns: minmax(0, 1fr) 65mm; gap: 6mm; padding: 0 0 6mm; }
+  #main > header figure { width: 65mm; }
+  #main h1 { font-size: 24pt; }
+  #main h2 { font-size: 17pt; margin-top: 2mm; }
+  #main h3 { margin-top: 5mm; }
+  #main section { padding: 6mm 0; }
+  #main section > div:last-child { margin-top: 4mm; }
+  #main p, #main li, #main dd { orphans: 3; widows: 3; }
+  #main h2, #main h3, #main summary, #main figcaption { break-after: avoid; }
+  #main figure, #main tr, #main details, #main li, #main dl > div { break-inside: avoid; }
+  #main .overflow-x-auto, #main .overflow-hidden { overflow: visible; }
+  #main table { min-width: 0; table-layout: auto; font-size: 9pt; }
+  #main th, #main td { overflow-wrap: anywhere; }
+  #main thead { display: table-header-group; }
+  #main a { color: inherit; }
+  #main a[data-print-reference]::after { content: attr(data-print-reference); font-size: 8pt; text-decoration: none; }
+  #main summary { min-height: 0; padding: 2mm 0; }
+  #main summary > span[aria-hidden] { display: none; }
+  #main .insurance-term { text-decoration: none; }
+  #main .choice-control:not(:has(input:checked)) { display: none; }
+  #main .choice-control { min-height: 0; padding: 2mm; border: 1px solid var(--primary); }
+  #main [role="radiogroup"] { display: flex; width: fit-content; background: none; border: none; padding: 0; }
+  #main #navigator .choice-control { flex-direction: row; }
+  #main #navigator ol { display: block; }
+  #main #navigator ol li { padding: 0 0 4mm 12mm; }
+  #main #navigator ol li > span:nth-child(2) { display: none; }
+  #main #help dl > div { display: block; }
+  #main footer { padding: 5mm 0; }
+  #main .print-links { break-before: page; }
+  .print-links ol { padding-left: 6mm; font-size: 9pt; }
+  .print-links li { margin-bottom: 3mm; overflow-wrap: anywhere; }
+  .print-links a { font-size: 8pt; }
+}
 @layer base {
   button:not(:disabled), select:not(:disabled), summary, a[href] { cursor: pointer; }
   button:disabled, select:disabled { cursor: not-allowed; }
