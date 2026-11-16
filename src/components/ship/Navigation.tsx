@@ -52,7 +52,7 @@ export function Navigation() {
             </Button>
           </div>
           <nav aria-label="Phone sections" className="mt-4 grid divide-y divide-border">
-            {NAV.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => { close(); const heading = document.getElementById(`${id}-h`); heading?.setAttribute("tabindex", "-1"); heading?.focus({ preventScroll: true }); }} aria-current={active === id ? "location" : undefined} className={`flex min-h-12 items-center justify-between px-2 ${active === id ? "bg-accent font-medium text-primary" : "hover:bg-muted"}`}>{label}{active === id && <span className="text-xs">Current section</span>}</a>)}
+            {NAV.map(([id, label]) => <a key={id} href={`#${id}`} onClick={(event) => { event.preventDefault(); close(); window.location.hash = id; requestAnimationFrame(() => { const heading = document.getElementById(`${id}-h`); heading?.setAttribute("tabindex", "-1"); heading?.focus({ preventScroll: true }); }); }} aria-current={active === id ? "location" : undefined} className={`flex min-h-12 items-center justify-between px-2 ${active === id ? "bg-accent font-medium text-primary" : "hover:bg-muted"}`}>{label}{active === id && <span className="text-xs">Current section</span>}</a>)}
           </nav>
         </div>
       </dialog>
