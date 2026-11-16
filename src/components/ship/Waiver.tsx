@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { useEffect, useState } from "react";
 import { Details, Section, Segmented, Src } from "./ui";
 import { COVERAGE, DEADLINES, SRC } from "@/data/ucship";
@@ -21,7 +22,7 @@ export function Waiver() {
     ["Submit through the portal", "Run by Academic HealthPlans; register with your student ID.", SRC.portal],
     ["Check approval", "Watch your email. Keep UC SHIP fees paid until approved.", SRC.waiver],
   ];
-  return (
+  return (<Translated>
     <Section id="waiver" eyebrow="Waiver" title="Already insured? Check before you waive"
       intro="Another insurance plan doesn’t cancel UC SHIP. You stay enrolled and keep paying until your waiver is approved. Apply again each academic year.">
       <ol className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 md:grid-cols-4">
@@ -64,7 +65,7 @@ export function Waiver() {
         <Details summary="If your other coverage ends">Contact Insurance Services quickly and submit a Request to Cancel Waiver form to enroll. You’ll be charged the full term premium (not pro-rated) and need proof of when coverage ended. <Src href={SRC.waiver} /></Details>
       </div>
       <p className="mt-8"><a href={SRC.portal} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90">Open the official waiver portal ↗</a></p>
-    </Section>
+    </Section></Translated>
   );
 }
 
@@ -74,7 +75,7 @@ export function Calendar() {
   const [sys, setSys] = useState<Sys>("quarter");
   const terms = COVERAGE[sys];
   const start = day(terms[0]!.start), end = day(terms[terms.length - 1]!.end) + 1;
-  return (
+  return (<Translated>
     <Section id="calendar" eyebrow="Coverage calendar" title="When you’re covered"
       intro="Coverage runs in back-to-back terms. Summer is included at no extra charge if you’re enrolled in UC SHIP for spring.">
       <Segmented label="Term system" value={sys} onChange={setSys} options={SYS_OPTS} />
@@ -93,6 +94,6 @@ export function Calendar() {
       </ol>
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">Light blue: earlier coverage terms · Dark blue: the spring term that includes summer · Gold: summer included at no extra charge</p>
       <p className="mt-2 text-xs text-muted-foreground"><Src href={SRC.insurance}>Official coverage dates</Src></p>
-    </Section>
+    </Section></Translated>
   );
 }

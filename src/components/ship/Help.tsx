@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { Section, Src } from "./ui";
 import { SOURCES_CHECKED, SRC } from "@/data/ucship";
 
@@ -20,7 +21,7 @@ const CONTACTS: { who: string; what: string; links: [string, string][] }[] = [
 ];
 
 export function Help() {
-  return (
+  return (<Translated>
     <>
       <Section id="terms" eyebrow="Vocabulary" title="Useful terms">
         <div className="grid gap-x-10 md:grid-cols-2">
@@ -50,6 +51,6 @@ export function Help() {
         <p className="prose-w">This is an independent student guide. UC Davis, UC SHIP and the insurers have not endorsed it. Figures are for the 2026–27 plan year. Sources checked {SOURCES_CHECKED}.</p>
         <p className="prose-w mt-2">Check official plan documents for full terms. We couldn’t find a 2026–27 Summary of Benefits and Coverage or confirm that the linked medical, pharmacy and dental booklets dated 2024 reflect this plan year. The vision summary is labeled 2026–27.</p>
       </footer>
-    </>
+    </></Translated>
   );
 }

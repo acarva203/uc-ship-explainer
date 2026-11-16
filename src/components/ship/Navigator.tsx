@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { useState } from "react";
 import { Icon, type IconName } from "./icons";
 import { Button, Section, Src } from "./ui";
@@ -50,7 +51,7 @@ export function Navigator() {
   const [sel, setSel] = useState("doctor");
   const p = PATHS.find((x) => x.key === sel);
   if (!p) return null;
-  return (
+  return (<Translated>
     <Section id="navigator" eyebrow="Care navigator" title="What do you need help with?"
       intro="A referral is SHCS approval to get covered care elsewhere. Whether you need one depends on the care you’re getting. This guide doesn’t assess symptoms.">
       <p role="note" className="flex items-start gap-3 rounded-lg border border-destructive/40 px-4 py-3 text-sm">
@@ -98,6 +99,6 @@ export function Navigator() {
           <a href={p.next.href} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center rounded-md bg-primary px-4 font-medium text-primary-foreground hover:bg-primary/90">{p.next.label} ↗</a>
         </div>
       </div>
-    </Section>
+    </Section></Translated>
   );
 }

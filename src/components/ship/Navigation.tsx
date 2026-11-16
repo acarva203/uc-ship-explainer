@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui";
 
@@ -18,7 +19,7 @@ export function Navigation() {
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    return (<Translated>) => window.removeEventListener("scroll", update);
   }, []);
 
   function close() { dialog.current?.close(); }
@@ -47,6 +48,6 @@ export function Navigation() {
           </nav>
         </div>
       </dialog>
-    </div>
+    </div></Translated>
   );
 }

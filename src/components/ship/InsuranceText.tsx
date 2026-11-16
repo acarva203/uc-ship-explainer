@@ -1,3 +1,4 @@
+import { Text } from "@/lib/guide-language";
 import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
@@ -32,9 +33,9 @@ function Term({ label, term }: { label: string; term: string }) {
   return <>
     <Button ref={trigger} type="button" className="insurance-term" aria-describedby={position ? id : undefined} aria-expanded={!!position}
       onMouseEnter={show} onMouseLeave={hideSoon} onFocus={show} onBlur={() => setPosition(null)} onClick={show} onKeyDown={(e) => { if (e.key === "Escape") { e.preventDefault(); setPosition(null); } }}>
-      {label}
+      <Text>{label}</Text>
     </Button>
-    {position && createPortal(<div id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={show} onMouseLeave={hideSoon}><p className="mb-1 font-medium">{label}</p>{INSURANCE_TERMS[term]}</div>, document.body)}
+    {position && createPortal(<div id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={show} onMouseLeave={hideSoon}><p className="mb-1 font-medium"><Text>{label}</Text></p><Text>{INSURANCE_TERMS[term] ?? term}</Text></div>, document.body)}
   </>;
 }
 

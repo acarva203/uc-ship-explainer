@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { Icon, type IconName } from "./icons";
 import { PLAN_YEAR, SRC } from "@/data/ucship";
 import { explainTerms } from "./InsuranceText";
@@ -11,7 +12,7 @@ const NODES: { id: string; label: string; icon: IconName; x: number; y: number }
 ];
 
 export function CoverageHub() {
-  return (
+  return (<Translated>
     <figure className="mx-auto w-full max-w-[320px] md:max-w-[420px]">
       <svg viewBox="-20 0 440 340" role="group" aria-labelledby="hub-title hub-desc" className="w-full text-primary">
         <title id="hub-title">UC SHIP coverage at a glance</title>
@@ -31,12 +32,12 @@ export function CoverageHub() {
         ))}
       </svg>
       <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted-foreground">Gold center: your UC SHIP plan · White circles: included care areas · Gray lines: connected to the same plan</figcaption>
-    </figure>
+    </figure></Translated>
   );
 }
 
 export function Hero() {
-  return (
+  return (<Translated>
     <header className="grid items-center gap-6 pb-8 pt-8 md:grid-cols-[1fr_420px] md:gap-10 md:py-12">
       <div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -56,6 +57,6 @@ export function Hero() {
         </nav>
       </div>
       <CoverageHub />
-    </header>
+    </header></Translated>
   );
 }
