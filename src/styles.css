@@ -167,6 +167,9 @@
   #main p, #main li, #main dd { orphans: 3; widows: 3; }
   #main h2, #main h3, #main summary, #main figcaption { break-after: avoid; }
   #main figure, #main tr, #main details, #main li, #main dl > div { break-inside: avoid; }
+  #main #coverage > div > ul > li { break-inside: auto; display: block; padding: 4mm 0; }
+  #main #coverage > div > ul > li > div:first-child { display: none; }
+  #main #coverage > div > ul > li > div:last-child { margin: 3mm 0; border: none; padding: 0; }
   #main .overflow-x-auto, #main .overflow-hidden { overflow: visible; }
   #main table { min-width: 0; table-layout: auto; font-size: 9pt; }
   #main th, #main td { overflow-wrap: anywhere; }
@@ -187,7 +190,7 @@
   #main #help dl > div { display: block; }
   #main footer { padding: 5mm 0; }
   #main .print-links { break-before: page; }
-  .print-links ol { padding-left: 6mm; font-size: 9pt; }
+  .print-links ol { padding-left: 6mm; font-size: 9pt; list-style: decimal; }
   .print-links li { margin-bottom: 3mm; overflow-wrap: anywhere; }
   .print-links a { font-size: 8pt; }
 }

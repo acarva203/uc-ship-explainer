@@ -1,7 +1,7 @@
 # Tasks
 
-- [ ] Add a print-friendly guide preserving the selected language, visual legends and key links; verify print output and return to the guide.
-- [ ] Clarify guide titles and apply de-ai to all guide text without altering facts or losing translations.
+- [x] Add a print-friendly guide preserving the selected language, visual legends and key links; checked PDFs in six languages and disclosure restoration.
+- [x] Clarify guide titles and apply de-ai to all guide text without altering facts or losing translations; reviewed all guide wording and translated the changed titles and explanations.
 
 - [x] Add UC Davis blue and gold to the guide and verify desktop/mobile presentation.
 - [x] Apply de-ai to the guide's text while preserving insurance facts, cautions and source links.
