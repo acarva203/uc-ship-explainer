@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="UC SHIP health insurance guide">
+  <style>:root{--shield:oklch(0.28 0.085 255);--health:oklch(0.835 0.171 85)}</style>
+  <path fill="var(--shield)" d="M32 2 58 12v19c0 15-13 25-26 31C19 56 6 46 6 31V12Z"/>
+  <path fill="var(--health)" d="M26 16h12v12h12v12H38v12H26V40H14V28h12Z"/>
+</svg>
