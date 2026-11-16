@@ -1,9 +1,11 @@
+import { Translated } from "./Translated";
 import { useState } from "react";
 import { Icon } from "./icons";
 import { Section, Segmented, Src } from "./ui";
 import { explainTerms } from "./InsuranceText";
 import { MEDICAL, PREMIUMS, SRC, VISITS, type Category } from "@/data/ucship";
 import { splitCost } from "@/lib/ship-math";
+import { useLanguage } from "@/lib/guide-language";
 
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: n % 1 ? 2 : 0 });
 
@@ -11,7 +13,7 @@ export function Costs() {
   const [cat, setCat] = useState<Category>("undergrad");
   const p = PREMIUMS[cat];
   const max = Math.max(...Object.values(PREMIUMS).map((x) => x.annual));
-  return (
+  return (<Translated>
     <Section id="costs" eyebrow="Costs" title="Having insurance vs. using it">
       <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
         <div className="bg-background p-5"><p className="font-semibold"><span className="mr-2 inline-block size-2.5 rounded-sm bg-primary align-middle" aria-hidden />Premium</p><p className="mt-1 text-sm text-muted-foreground">What you pay to have the plan. Billed each term to your student account.</p></div>
@@ -65,15 +67,16 @@ export function Costs() {
         </table>
       </div>
       <CostSplit />
-    </Section>
+    </Section></Translated>
   );
 }
 
 function CostSplit() {
+  const { language } = useLanguage();
   const [amt, setAmt] = useState(2000);
   const s = splitCost(amt, MEDICAL.deductible, MEDICAL.inpatientCoinsurance, MEDICAL.oopMax);
   const pct = (n: number) => (amt ? (n / amt) * 100 : 0);
-  return (
+  return (<Translated>
     <div className="mt-14 rounded-lg border border-border p-5 md:p-7">{explainTerms(<>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">How a deductible and coinsurance split a bill</h3>
@@ -99,6 +102,6 @@ function CostSplit() {
         {usd(s.deductiblePart)} + {usd(s.coinsurancePart)} = {usd(s.you)} you · {usd(s.you)} + {usd(s.plan)} = {usd(amt)} total{s.capped ? " · capped at the out-of-pocket max" : ""}
       </p>
       <p className="prose-w mt-4 text-xs text-muted-foreground">Many services waive the deductible and use a flat copay instead (office visits, urgent care, ER). Real costs depend on the service, network, referral and what you’ve already paid this year.</p>
-    </> )}</div>
+    </>, new Set(), language )}</div></Translated>
   );
 }

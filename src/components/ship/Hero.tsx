@@ -1,6 +1,8 @@
+import { Translated } from "./Translated";
 import { Icon, type IconName } from "./icons";
 import { PLAN_YEAR, SRC } from "@/data/ucship";
 import { explainTerms } from "./InsuranceText";
+import { useLanguage } from "@/lib/guide-language";
 
 const NODES: { id: string; label: string; icon: IconName; x: number; y: number }[] = [
   { id: "cov-medical", label: "Medical", icon: "medical", x: 200, y: 38 },
@@ -11,7 +13,7 @@ const NODES: { id: string; label: string; icon: IconName; x: number; y: number }
 ];
 
 export function CoverageHub() {
-  return (
+  return (<Translated>
     <figure className="mx-auto w-full max-w-[320px] md:max-w-[420px]">
       <svg viewBox="-20 0 440 340" role="group" aria-labelledby="hub-title hub-desc" className="w-full text-primary">
         <title id="hub-title">UC SHIP coverage at a glance</title>
@@ -31,12 +33,13 @@ export function CoverageHub() {
         ))}
       </svg>
       <figcaption className="mt-2 text-center text-xs leading-relaxed text-muted-foreground">Gold center: your UC SHIP plan · White circles: included care areas · Gray lines: connected to the same plan</figcaption>
-    </figure>
+    </figure></Translated>
   );
 }
 
 export function Hero() {
-  return (
+  const { language } = useLanguage();
+  return (<Translated>
     <header className="grid items-center gap-6 pb-8 pt-8 md:grid-cols-[1fr_420px] md:gap-10 md:py-12">
       <div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -46,8 +49,9 @@ export function Hero() {
         </div>
          <h1 className="mt-4 text-3xl font-medium text-primary md:text-4xl">UC SHIP, made clear</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">What your UC Davis health insurance covers, where to get care, and what you’ll pay.</p>
+        {language !== "en" && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Translations are incomplete and have not been professionally reviewed. Some text remains in English; official plan documents govern.</p>}
         <p className="prose-w mt-4 text-sm text-muted-foreground">
-          {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.")} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
+          {explainTerms("UC Davis enrolls registered students in UC SHIP automatically. To opt out, you need an approved waiver.", new Set(), language)} <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>
         </p>
         <nav aria-label="Start here" className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <a href="#navigator" className="inline-flex min-h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">I need care</a>
@@ -56,6 +60,6 @@ export function Hero() {
         </nav>
       </div>
       <CoverageHub />
-    </header>
+    </header></Translated>
   );
 }

@@ -1,3 +1,4 @@
+import { Translated } from "./Translated";
 import { Icon, type IconName } from "./icons";
 import { Details, Section, Src } from "./ui";
 import { SRC } from "@/data/ucship";
@@ -56,7 +57,7 @@ const ROWS: Row[] = [
 ];
 
 export function Coverage() {
-  return (
+  return (<Translated>
     <Section id="coverage" eyebrow="Coverage" title="What the plan covers"
       intro="Medical, mental health, prescriptions, dental and vision are included. The provider networks and payment rules differ by benefit.">
       <ul className="divide-y divide-border border-y border-border">
@@ -77,6 +78,6 @@ export function Coverage() {
           </li>
         ))}
       </ul>
-    </Section>
+    </Section></Translated>
   );
 }

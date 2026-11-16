@@ -1,3 +1,4 @@
+import { Text, translate, type Language } from "@/lib/guide-language";
 import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { INSURANCE_TERMS } from "@/data/insurance-terms";
@@ -32,29 +33,33 @@ function Term({ label, term }: { label: string; term: string }) {
   return <>
     <Button ref={trigger} type="button" className="insurance-term" aria-describedby={position ? id : undefined} aria-expanded={!!position}
       onMouseEnter={show} onMouseLeave={hideSoon} onFocus={show} onBlur={() => setPosition(null)} onClick={show} onKeyDown={(e) => { if (e.key === "Escape") { e.preventDefault(); setPosition(null); } }}>
-      {label}
+      <Text>{label}</Text>
     </Button>
-    {position && createPortal(<div id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={show} onMouseLeave={hideSoon}><p className="mb-1 font-medium">{label}</p>{INSURANCE_TERMS[term]}</div>, document.body)}
+    {position && createPortal(<div id={id} role="tooltip" className="term-definition fixed z-50 rounded-md border border-border bg-popover p-4 text-sm leading-relaxed text-popover-foreground" style={position} onMouseEnter={show} onMouseLeave={hideSoon}><p className="mb-1 font-medium"><Text>{label}</Text></p><Text>{INSURANCE_TERMS[term] ?? term}</Text></div>, document.body)}
   </>;
 }
 
-export function explainTerms(children: ReactNode, seen = new Set<string>()): ReactNode {
+export function explainTerms(children: ReactNode, seen = new Set<string>(), language: Language = "en"): ReactNode {
+  const localized = new Map(Object.keys(INSURANCE_TERMS).map((term) => [translate(term, language).toLowerCase(), term]));
+  const localWords = [...localized.keys()].sort((a,b) => b.length-a.length).map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const matcher = language === "en" ? pattern : new RegExp(`(${localWords.join("|")})`, "gi");
   return Children.map(children, (child) => {
     if (typeof child === "string") {
+      const text = translate(child, language);
       const parts: ReactNode[] = [];
       let start = 0;
-      for (const match of child.matchAll(pattern)) {
+      for (const match of text.matchAll(matcher)) {
         const index = match.index;
-        const term = match[1]?.toLowerCase();
+        const term = language === "en" ? match[1]?.toLowerCase() : localized.get(match[1]?.toLowerCase() ?? "");
         if (!term) continue;
-        parts.push(child.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
+        parts.push(text.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
         start = index + match[0].length;
       }
-      parts.push(child.slice(start));
+      parts.push(text.slice(start));
       return parts;
     }
     if (!isValidElement<{ children?: ReactNode }>(child)) return child;
     if (child.type === Button || child.type === Term || ["a", "button", "svg", "summary", "input", "label", "option"].includes(String(child.type))) return child;
-    return cloneElement(child, {}, explainTerms(child.props.children, seen));
+    return cloneElement(child, {}, explainTerms(child.props.children, seen, language));
   });
 }
