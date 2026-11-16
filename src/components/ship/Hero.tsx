@@ -18,7 +18,7 @@ export function CoverageHub() {
         {NODES.map((n) => (
           <line key={n.id} x1="200" y1="170" x2={n.x} y2={n.y} stroke="var(--color-border)" strokeWidth="1.5" strokeDasharray="3 4" />
         ))}
-        <circle cx="200" cy="170" r="52" fill="var(--color-accent)" stroke="var(--color-primary)" strokeWidth="1.5" />
+         <circle cx="200" cy="170" r="52" fill="var(--color-gold-soft)" stroke="var(--color-gold)" strokeWidth="2" />
         <g transform="translate(176 140) scale(1.7)" className="text-primary"><Icon name="shield" className="" width={28} height={28} /></g>
         <text x="200" y="204" textAnchor="middle" fontSize="12" fontWeight="600" fill="var(--color-primary)">UC SHIP</text>
         {NODES.map((n) => (
@@ -42,7 +42,7 @@ export function Hero() {
           <span className="rounded-full border border-border px-2.5 py-1 font-medium">Independent student guide</span>
           <span className="rounded-full bg-gold-soft px-2.5 py-1 font-medium text-gold-foreground">Plan year {PLAN_YEAR}</span>
         </div>
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight md:text-4xl">UC SHIP, made clear.</h1>
+         <h1 className="mt-6 text-3xl font-semibold text-primary md:text-4xl">UC SHIP, made clear.</h1>
         <p className="prose-w mt-4 text-lg text-muted-foreground">Your UC Davis health insurance—what’s covered, where to go, and what you pay.</p>
         <p className="prose-w mt-4 text-sm text-muted-foreground">
           Every registered UC Davis student is automatically enrolled in UC SHIP unless an approved waiver is on file. <a className="underline underline-offset-4 hover:text-primary" href={SRC.insurance} target="_blank" rel="noreferrer">SHCS ↗</a>

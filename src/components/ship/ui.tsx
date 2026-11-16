@@ -3,7 +3,7 @@ export function Section({ id, eyebrow, title, intro, children }: { id: string; e
   return (
     <section id={id} aria-labelledby={`${id}-h`} className="border-t border-border py-16 md:py-20">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 id={`${id}-h`} className="mt-2 text-xl font-semibold tracking-tight md:text-2xl">{title}</h2>
+       <h2 id={`${id}-h`} className="mt-2 text-xl font-semibold text-primary md:text-2xl">{title}</h2>
       {intro && <div className="prose-w mt-3 text-muted-foreground">{intro}</div>}
       <div className="mt-8">{children}</div>
     </section>
