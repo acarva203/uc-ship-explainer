@@ -33,7 +33,8 @@ use the editor.
 - All UC SHIP facts live in `src/data/ucship.ts` with source URLs; components read from it — keeps figures verifiable and single-sourced.
 - Cost/deadline logic is pure in `src/lib/ship-math.ts` with tests in `src/test/ship-math.test.ts` — math must stay testable.
 - Section navigation uses a shared Navigation component with a native dialog on phones; native focus trapping and Escape dismissal keep all destinations keyboard-accessible.
-- Selection controls use shared Radix radio primitives with roving focus and arrow-key selection — preserves the keyboard behavior promised by radio semantics.
+- Selection controls use shared native radio inputs with labeled visual targets — browser-native arrow-key selection avoids custom keyboard timing issues.
+- Waiver status uses a live local-date hook that refreshes at midnight and on focus/visibility — open tabs must not show stale deadline status.
 - Insurance definitions are single-sourced in `src/data/insurance-terms.ts` and added to reading text through InsuranceText; skip interactive labels to avoid nesting buttons.
 - Guide languages use bundled translation catalogs and React text wrappers with a URL language preference; translate display text only so insurance calculations and official links remain unchanged.
 <!-- AGENT-MEMORY:END -->

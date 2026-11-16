@@ -16,7 +16,10 @@ export function parseISO(iso: string): [number, number, number] {
 /** A deadline counts as passed after the end of its calendar day (local time). */
 export function deadlineStatus(isoDate: string, today: Date): "upcoming" | "passed" {
   const [y, m, d] = parseISO(isoDate);
-  return today.getTime() > new Date(y, m - 1, d, 23, 59, 59).getTime() ? "passed" : "upcoming";
+  return today.getTime() >= new Date(y, m - 1, d + 1).getTime() ? "passed" : "upcoming";
+}
+export function millisecondsUntilNextDay(now: Date): number {
+  return Math.max(1, new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime() - now.getTime());
 }
 export function formatDate(iso: string) {
   const [y, m, d] = parseISO(iso);
