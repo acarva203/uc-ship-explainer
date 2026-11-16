@@ -45,17 +45,17 @@ export function explainTerms(children: ReactNode, seen = new Set<string>(), lang
   const matcher = language === "en" ? pattern : new RegExp(`(${localWords.join("|")})`, "gi");
   return Children.map(children, (child) => {
     if (typeof child === "string") {
-      child = translate(child, language);
+      const text = translate(child, language);
       const parts: ReactNode[] = [];
       let start = 0;
-      for (const match of child.matchAll(matcher)) {
+      for (const match of text.matchAll(matcher)) {
         const index = match.index;
         const term = language === "en" ? match[1]?.toLowerCase() : localized.get(match[1]?.toLowerCase() ?? "");
         if (!term) continue;
-        parts.push(child.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
+        parts.push(text.slice(start, index), firstTermOccurrence(term, seen) ? <Term key={`${index}-${term}`} label={match[0]} term={term} /> : match[0]);
         start = index + match[0].length;
       }
-      parts.push(child.slice(start));
+      parts.push(text.slice(start));
       return parts;
     }
     if (!isValidElement<{ children?: ReactNode }>(child)) return child;
