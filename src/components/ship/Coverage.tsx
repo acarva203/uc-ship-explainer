@@ -44,7 +44,7 @@ const ROWS: Row[] = [
       <li>Deductible for other services: $25 in network, $50 out.</li>
       <li>Basic (fillings, root canals, extractions): 20% in network, 40% out.</li>
       <li>Major (crowns, inlays, prosthodontics): 30% in network, 60% out.</li>
-      <li>Out-of-network benefits max out at $750, within the $1,200 combined.</li>
+      <li>The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.</li>
     </ul></>), src: SRC.dental },
   { id: "cov-vision", icon: "vision", title: "Vision", carrier: "Anthem Blue View Vision", desc: "A yearly eye exam and an allowance for glasses or contacts.",
     stat: "$10", statLabel: "Routine eye exam copay, in network",

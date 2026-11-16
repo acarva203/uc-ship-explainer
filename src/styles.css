@@ -172,6 +172,7 @@
   #main th, #main td { overflow-wrap: anywhere; }
   #main thead { display: table-header-group; }
   #main a { color: inherit; }
+  #main a.bg-primary { background: transparent; color: var(--foreground); padding: 0; min-height: 0; text-decoration: underline; }
   #main a[data-print-reference]::after { content: attr(data-print-reference); font-size: 8pt; text-decoration: none; }
   #main summary { min-height: 0; padding: 2mm 0; }
   #main summary > span[aria-hidden] { display: none; }

@@ -40,7 +40,7 @@ const PATHS: Path[] = [
     cost: "In-network checkup and cleaning $0 · Fillings 20% after $25 deductible", next: { label: "Dental coverage", href: SRC.dental }, src: SRC.dental },
   { key: "vision", label: "Vision", icon: "vision", referral: "No", summary: "Book an eye exam on campus or with an Anthem Blue View Vision Insight provider. No referral needed.",
     steps: [
-      { title: "On campus or off", body: "SHCS Optometry Clinic and Optical Shop, or search Anthem for “Blue View Vision Insight.”" },
+      { title: "Choose an eye care provider", body: "SHCS Optometry Clinic and Optical Shop, or search Anthem for “Blue View Vision Insight.”" },
       { title: "Book an exam", body: "One routine exam per benefit year." },
       { title: "Use your eyewear allowance", body: "$120 frames or $120 contacts in network, once per benefit year." },
     ],
@@ -52,7 +52,7 @@ export function Navigator() {
   const p = PATHS.find((x) => x.key === sel);
   if (!p) return null;
   return (<Translated>
-    <Section id="navigator" eyebrow="Care navigator" title="What do you need help with?"
+    <Section id="navigator" eyebrow="Care navigator" title="How to get care"
       intro="A referral is SHCS approval to get covered care elsewhere. Whether you need one depends on the care you’re getting. This guide doesn’t assess symptoms.">
       <p role="note" className="flex items-start gap-3 rounded-lg border border-destructive/40 px-4 py-3 text-sm">
         <span aria-hidden className="mt-0.5 font-semibold text-destructive">!</span>

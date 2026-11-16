@@ -12,9 +12,9 @@ import { PrintSupport } from "@/components/ship/PrintSupport";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "UC SHIP, made clear — UC Davis student health insurance guide" },
+      { title: "UC Davis UC SHIP guide | Student health insurance 2026–27" },
       { name: "description", content: "Independent visual guide to UC Davis UC SHIP 2026–27: where to get care, referrals, premiums, costs and waiver deadlines." },
-      { property: "og:title", content: "UC SHIP, made clear" },
+      { property: "og:title", content: "UC Davis UC SHIP guide" },
       { property: "og:description", content: "Where to go, what you pay, and how to waive UC Davis student health insurance, 2026–27." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -14,7 +14,7 @@ export function Costs() {
   const p = PREMIUMS[cat];
   const max = Math.max(...Object.values(PREMIUMS).map((x) => x.annual));
   return (<Translated>
-    <Section id="costs" eyebrow="Costs" title="Having insurance vs. using it">
+    <Section id="costs" eyebrow="Costs" title="Plan premiums and care costs">
       <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
         <div className="bg-background p-5"><p className="font-semibold"><span className="mr-2 inline-block size-2.5 rounded-sm bg-primary align-middle" aria-hidden />Premium</p><p className="mt-1 text-sm text-muted-foreground">What you pay to have the plan. Billed each term to your student account.</p></div>
         <div className="bg-background p-5"><p className="font-semibold"><span className="mr-2 inline-block size-2.5 rounded-full border-2 border-gold align-middle" aria-hidden />Care costs</p><p className="mt-1 text-sm text-muted-foreground">What you may pay when you use it: copays, deductible, coinsurance. Premiums never count toward the out-of-pocket max.</p></div>

@@ -20,7 +20,7 @@ export function Waiver() {
     ["Check approval", "Watch your email. Keep UC SHIP fees paid until approved.", SRC.waiver],
   ];
   return (<Translated>
-    <Section id="waiver" eyebrow="Waiver" title="Already insured? Check before you waive"
+    <Section id="waiver" eyebrow="Waiver" title="How to opt out of UC SHIP"
       intro="Another insurance plan doesn’t cancel UC SHIP. You stay enrolled and keep paying until your waiver is approved. Apply again each academic year.">
       <ol className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 md:grid-cols-4">
         {steps.map(([t, b, h], i) => (
@@ -54,8 +54,8 @@ export function Waiver() {
       <p className="mt-3 text-xs text-muted-foreground">{message("Status is based on your device’s date{date}. Summer-start programs get deadlines from their program.", language, { date: today ? ` (${localDate(today, language)})` : "" })} <Src href={SRC.waiver} /></p>
 
       <div className="mt-10 grid gap-x-10 md:grid-cols-2">
-        <Details summary="Annual renewal">Approved waivers last one academic year. Submit a new one before each year starts. If you gain coverage mid-year, you can waive the remaining terms. <Src href={SRC.waiver} /></Details>
-        <Details summary="Local access (50-mile rule)">Your plan must give in-person, in-network primary care, a hospital, and full non-emergency medical and behavioral care within 50 miles of campus or where you live while at school. Starting 2026–27 this also applies to HMOs and Medi-Cal (previously 175 miles). Travel, ministry cost-sharing and county CMSP plans can’t be used. <Src href={SRC.criteria} /></Details>
+        <Details summary="Renew your waiver each year">Approved waivers last one academic year. Submit a new one before each year starts. If you gain coverage mid-year, you can waive the remaining terms. <Src href={SRC.waiver} /></Details>
+        <Details summary="Care within 50 miles">Your plan must give in-person, in-network primary care, a hospital, and full non-emergency medical and behavioral care within 50 miles of campus or where you live while at school. Starting 2026–27 this also applies to HMOs and Medi-Cal (previously 175 miles). Travel, ministry cost-sharing and county CMSP plans can’t be used. <Src href={SRC.criteria} /></Details>
         <Details summary="Other plan requirements">Medi-Cal, Medicare, TRICARE, Covered California/exchange or UC employee plans qualify by type. Employer or individual plans must have an out-of-pocket max of $10,600 or less (individual), equal mental health coverage, all essential health benefits, and not be a reimbursement plan. <Src href={SRC.criteria} /></Details>
         <Details summary="International students: extra criteria">Also required: no pre-existing condition exclusions, no lifetime maximums, coverage for suicide-related care and amateur sports injuries, an English master policy in U.S. dollars, a U.S. claims office, at least $50,000 medical evacuation and $25,000 repatriation. <Src href={SRC.criteria} /></Details>
         <Details summary="Missed the deadline?">You can submit a late waiver up to 30 days after the deadline. Approved late waivers cost a $75 fee and apply only to current and future terms; processing takes about 30 days. Email <a className="underline" href="mailto:waiver@shcs.ucdavis.edu">waiver@shcs.ucdavis.edu</a> or visit Insurance Services (3rd floor, Student Health and Wellness Center). Denied? You can appeal using the <a className="underline" href={SRC.forms} target="_blank" rel="noreferrer">Waiver Appeal form ↗</a>. <Src href={SRC.waiver} /></Details>
@@ -76,7 +76,7 @@ export function Calendar() {
   if (!first || !last) return null;
   const start = day(first.start), end = day(last.end) + 1;
   return (<Translated>
-    <Section id="calendar" eyebrow="Coverage calendar" title="When you’re covered"
+    <Section id="calendar" eyebrow="Coverage calendar" title="Coverage dates"
       intro="Coverage runs in back-to-back terms. Summer is included at no extra charge if you’re enrolled in UC SHIP for spring.">
       <Segmented label="Term system" value={sys} onChange={setSys} options={SYS_OPTS} />
       <ol className="mt-8 flex flex-col gap-3 md:flex-row md:gap-1" aria-label={message(sys === "quarter" ? "2026–27 coverage periods, quarter students" : "2026–27 coverage periods, semester students", language)}>
