@@ -408,5 +408,16 @@
   "Contacts": "Contactos",
   "Choose an eye care provider": "Elige un proveedor de atención de la vista",
   "The plan pays up to $750 for out-of-network dental care. That amount counts toward the combined $1,200 annual dental benefit maximum.": "El plan paga hasta $750 por atención dental fuera de la red. Esa cantidad cuenta para el máximo combinado de beneficios dentales de $1,200 al año.",
-  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "El monto que usted paga por ciertos servicios cubiertos antes de que el seguro comience a compartir esos costos cada año de beneficios. El deducible no se aplica a todos los servicios."
+  "The amount you pay for certain covered services before insurance starts sharing those costs each benefit year. The deductible does not apply to every service.": "El monto que usted paga por ciertos servicios cubiertos antes de que el seguro comience a compartir esos costos cada año de beneficios. El deducible no se aplica a todos los servicios.",
+  "Ask about UC SHIP": "Pregunta sobre UC SHIP",
+  "Your question about care, referrals or costs": "Tu pregunta sobre atención, remisiones o costos",
+  "Do I need a referral to see a therapist off campus?": "¿Necesito una remisión para ver a un terapeuta fuera del campus?",
+  "Your question is sent to AI. Don’t include names, student IDs, insurance IDs or private medical details.": "Tu pregunta se envía a una IA. No incluyas nombres, números de estudiante o de seguro ni detalles médicos privados.",
+  "Finding guidance…": "Buscando información…",
+  "Find guidance": "Buscar información",
+  "AI guidance is unavailable right now. Use the care guide or contact SHCS.": "La búsqueda con IA no está disponible ahora. Consulta la guía de atención o contacta con SHCS.",
+  "AI guidance is paused because usage credits are unavailable. The rest of the guide still works.": "La búsqueda con IA está pausada porque no hay créditos de uso disponibles. El resto de la guía sigue funcionando.",
+  "AI-matched excerpts from this independent 2026–27 guide, not a coverage decision. Confirm details with SHCS and official plan documents.": "Fragmentos de esta guía independiente de 2026–27 seleccionados por IA, no una decisión sobre cobertura. Confirma los detalles con SHCS y los documentos oficiales del plan.",
+  "This tool cannot assess symptoms. For an emergency, call 911. For advice, call SHCS at (530) 752-2349.": "Esta herramienta no puede evaluar síntomas. En una emergencia, llama al 911. Para pedir orientación, llama a SHCS al (530) 752-2349.",
+  "No matching guidance found. Contact SHCS for your question.": "No se encontró información relacionada. Contacta con SHCS para tu pregunta."
 }
