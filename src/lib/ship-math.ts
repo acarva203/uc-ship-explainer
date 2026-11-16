@@ -9,12 +9,16 @@ export function splitCost(allowed: number, deductible: number, coinsurance: numb
   const you = Math.round((deductiblePart + coinsurancePart) * 100) / 100;
   return { deductiblePart, coinsurancePart: Math.round(coinsurancePart * 100) / 100, you, plan: Math.round((a - you) * 100) / 100, capped };
 }
+export function parseISO(iso: string): [number, number, number] {
+  const [y = 0, m = 1, d = 1] = iso.split("-").map(Number);
+  return [y, m, d];
+}
 /** A deadline counts as passed after the end of its calendar day (local time). */
 export function deadlineStatus(isoDate: string, today: Date): "upcoming" | "passed" {
-  const [y, m, d] = isoDate.split("-").map(Number);
+  const [y, m, d] = parseISO(isoDate);
   return today.getTime() > new Date(y, m - 1, d, 23, 59, 59).getTime() ? "passed" : "upcoming";
 }
 export function formatDate(iso: string) {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y, m, d] = parseISO(iso);
   return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 }

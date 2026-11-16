@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Details, Section, Segmented, Src } from "./ui";
 import { COVERAGE, DEADLINES, SRC } from "@/data/ucship";
-import { deadlineStatus, formatDate } from "@/lib/ship-math";
+import { deadlineStatus, formatDate, parseISO } from "@/lib/ship-math";
 
 type Sys = "quarter" | "semester";
 const SYS_OPTS = [{ value: "quarter" as Sys, label: "Quarter (undergrad, grad)" }, { value: "semester" as Sys, label: "Semester (law, vet)" }];
@@ -67,12 +67,12 @@ export function Waiver() {
   );
 }
 
-const day = (iso: string) => { const [y, m, d] = iso.split("-").map(Number); return Date.UTC(y, m - 1, d) / 864e5; };
+const day = (iso: string) => { const [y, m, d] = parseISO(iso); return Date.UTC(y, m - 1, d) / 864e5; };
 
 export function Calendar() {
   const [sys, setSys] = useState<Sys>("quarter");
   const terms = COVERAGE[sys];
-  const start = day(terms[0].start), end = day(terms[terms.length - 1].end) + 1;
+  const start = day(terms[0]!.start), end = day(terms[terms.length - 1]!.end) + 1;
   return (
     <Section id="calendar" eyebrow="Coverage calendar" title="When you’re covered"
       intro="Coverage runs in back-to-back terms. Summer is included at no extra charge if you’re enrolled in UC SHIP for spring.">
