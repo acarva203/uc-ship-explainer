@@ -21,12 +21,12 @@ export function Navigation() {
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return (<Translated>) => window.removeEventListener("scroll", update);
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   function close() { dialog.current?.close(); }
 
-  return (
+  return (<Translated>
     <div className="sticky top-0 z-40 border-b-2 border-gold bg-background">
       <div className="mx-auto flex h-14 max-w-[1040px] items-center justify-between gap-4 px-5">
         <a href="#top" className="whitespace-nowrap text-sm font-semibold text-primary">UC SHIP<span className="hidden sm:inline">, made clear</span></a>
