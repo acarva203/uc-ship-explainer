@@ -394,5 +394,7 @@
   "HMO": "HMO",
   "PPO": "PPO",
   "formularies": "lista de medicamentos cubiertos",
-  ". No referral needed.": ". No se necesita remisión."
+  ". No referral needed.": ". No se necesita remisión.",
+  "Print guide": "Imprimir guía",
+  "Sources and links": "Fuentes y enlaces"
 }

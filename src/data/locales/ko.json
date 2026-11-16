@@ -394,5 +394,7 @@
   "HMO": "HMO",
   "PPO": "PPO",
   "formularies": "보장 약품 목록",
-  ". No referral needed.": ". 진료 의뢰는 필요하지 않습니다."
+  ". No referral needed.": ". 진료 의뢰는 필요하지 않습니다.",
+  "Print guide": "안내서 인쇄",
+  "Sources and links": "출처 및 링크"
 }
