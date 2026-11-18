@@ -27,9 +27,9 @@ export function Navigation() {
   function close() { dialog.current?.close(); }
 
   return (<Translated>
-    <div className="print-hide sticky top-0 z-40 border-b-2 border-gold bg-background">
+    <div className="print-hide sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex min-h-14 max-w-[1040px] flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-1">
-        <a href="#top" className="whitespace-nowrap text-sm font-semibold text-primary">UC SHIP</a>
+        <a href="#top" className="flex min-h-11 items-center gap-2 whitespace-nowrap text-base font-bold tracking-tight text-primary before:h-4 before:w-1 before:bg-gold">UC SHIP</a>
         <nav aria-label="Sections" className="hidden gap-1 text-sm lg:flex">
           {NAV.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} className={`inline-flex min-h-11 items-center border-b-2 px-2 transition-colors ${active === id ? "border-primary font-medium text-primary" : "border-transparent text-muted-foreground hover:text-foreground"}`}>{label}</a>)}
         </nav>
