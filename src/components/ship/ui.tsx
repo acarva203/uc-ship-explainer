@@ -23,7 +23,7 @@ export function Section({ id, eyebrow, title, intro, children }: { id: string; e
   return (
     <section id={id} aria-labelledby={`${id}-h`} className={`border-t border-border py-12 ${id === "coverage" || id === "terms" || id === "help" ? "md:py-14" : "md:py-16"}`}>
       {!["coverage", "costs", "waiver", "calendar"].includes(id) && <p className="eyebrow">{<Text>{eyebrow}</Text>}</p>}
-       <h2 id={`${id}-h`} className="mt-2 text-xl font-medium text-foreground md:text-2xl">{<Text>{title}</Text>}</h2>
+       <h2 id={`${id}-h`} className="mt-2 max-w-[34ch] text-balance text-2xl font-semibold leading-tight tracking-tight text-primary md:text-3xl">{<Text>{title}</Text>}</h2>
       {intro && <div className="prose-w mt-3 text-muted-foreground">{<Translated>{explainTerms(intro, new Set(), language)}</Translated>}</div>}
       <div className="mt-8">{<Translated>{explainTerms(children, new Set(), language)}</Translated>}</div>
     </section>
